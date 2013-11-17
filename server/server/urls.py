@@ -7,6 +7,7 @@ from views import *
 
 urlpatterns = patterns('',
     (r'^$', test),
+    (r'^post/', post),
     # Examples:
     # url(r'^$', 'server.views.home', name='home'),
     # url(r'^server/', include('server.foo.urls')),
