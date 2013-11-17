@@ -3,6 +3,7 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 
 import urllib2
+import re
 
 from tools import MultiPartForm
 
@@ -12,6 +13,9 @@ def test(request):
   return render_to_response('test.html', context_instance=RequestContext(request));
 
 def post(request):
+  if not request.POST:
+    return HttpResponseRedirect('/')
+
   form = MultiPartForm()
   for key in request.POST:
     form.add_field(key, request.POST[key])
@@ -24,8 +28,11 @@ def post(request):
 
   try:
     url_response = urllib2.urlopen(url_request, timeout=20)
+    page = url_response.read()
+    iter = re.finditer(r'Your percentile: (\d*)<', page)
+    list = [i.group(1) for i in iter]
     return render_to_response('result.html', {
-      'result' : url_response.geturl()},
+      'result' : list},
       context_instance=RequestContext(request));
   except Exception as e:
     return HttpResponseRedirect('/')
