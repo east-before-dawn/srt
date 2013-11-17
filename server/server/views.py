@@ -24,7 +24,8 @@ def get_authorize(request):
   return HttpResponseRedirect(get_grantcode)
 
 def test(request):
-  global flag, usr_id
+  global flag
+  global usr_id
   if (not flag):
     urlnow = request.get_full_path()
     code = re.search(r'code=([0-9a-zA-Z]*)&', urlnow)
