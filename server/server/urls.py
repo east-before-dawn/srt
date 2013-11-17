@@ -6,7 +6,8 @@ from views import *
 # admin.autodiscover()
 
 urlpatterns = patterns('',
-    (r'^$', test),
+    (r'^$', get_authorize),
+    (r'^test/', test),
     (r'^post/', post),
     # Examples:
     # url(r'^$', 'server.views.home', name='home'),
