@@ -9,8 +9,11 @@ import os.path
 from tools import MultiPartForm
 
 url = 'http://www.outofservice.com/bigfive/'
-client_id = "client_id=d8f59b2af38f49e895ab39a30f2fdf33"
-client_secret = "client_secret=cceb282da5d34baa8684e9bdde3cb038"
+#client_id = "client_id=d8f59b2af38f49e895ab39a30f2fdf33"
+#client_secret = "client_secret=cceb282da5d34baa8684e9bdde3cb038"
+# below is for test: bigfivetest
+client_id = "client_id=8b8031a73dc544bebcb356e3a65855d6"
+client_secret = "client_secret=7e7ccb94afa5465abaa14a991275935a"
 redirect_uri = "redirect_uri=http://127.0.0.1:8000/test"
 url_auth = "https://graph.renren.com/oauth"
 usr_id = ""
