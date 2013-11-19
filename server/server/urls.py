@@ -9,7 +9,7 @@ urlpatterns = patterns('',
     (r'^$', get_authorize),
     (r'^auth/$', auth),
     (r'^test/$', test),
-    (r'^test/post/$', post),
+    (r'^post/$', post),
     # Examples:
     # url(r'^$', 'server.views.home', name='home'),
     # url(r'^server/', include('server.foo.urls')),

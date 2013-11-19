@@ -36,20 +36,31 @@ def auth(request):
   return response
 
 def test(request):
-  if 'status' in request.GET:
-    status = request.GET['status']
-  else:
-    status = None
   return render_to_response('test.html',
-      {'status' : status},
       context_instance=RequestContext(request))
 
 def post(request):
+  finished = True
   for i in range(1, 46):
-    if i < 10 and 'bigfive-me-0'+str(i) not in request.POST:
-      return HttpResponseRedirect('/test?status=NOTFINISHED')
-    if i >= 10 and 'bigfive-me-'+str(i) not in request.POST:
-      return HttpResponseRedirect('/test?status=NOTFINISHED')
+    if i < 10:
+      key = 'bigfive-me-0'+str(i)
+    else:
+      key = 'bigfive-me-'+str(i)
+    if key not in request.POST:
+      finished = False
+      break
+  if not finished:
+    checked = []
+    for i in range(1, 46):
+      if i < 10:
+        key = 'bigfive-me-0'+str(i)
+      else:
+        key = 'bigfive-me-'+str(i)
+      checked.append(request.POST.get(key, 0))
+    return render_to_response('test.html',
+        {'status' : 'NOTFINISHED',
+         'checked' : checked},
+        context_instance=RequestContext(request))
 
   form = MultiPartForm()
   for key in request.POST:
@@ -67,7 +78,9 @@ def post(request):
   iter = re.finditer(r'R=([\d\.]*)&', get_url)
   list = [i.group(1) for i in iter]
   if not list:
-    return HttpResponseRedirect('/test?status=ERROR')
+    return render_to_response('test.html',
+        {'status' : status},
+        context_instance=RequestContext(request))
 
   dic = dict(zip('OCEAN', list))
   dic['M'] = request.POST['mark']
