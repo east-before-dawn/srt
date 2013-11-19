@@ -9,48 +9,48 @@ import os.path
 from tools import MultiPartForm
 
 url = 'http://www.outofservice.com/bigfive/'
-#client_id = "client_id=d8f59b2af38f49e895ab39a30f2fdf33"
-#client_secret = "client_secret=cceb282da5d34baa8684e9bdde3cb038"
+#client_id = 'client_id=d8f59b2af38f49e895ab39a30f2fdf33'
+#client_secret = 'client_secret=cceb282da5d34baa8684e9bdde3cb038'
 # below is for test: bigfivetest
-client_id = "client_id=8b8031a73dc544bebcb356e3a65855d6"
-client_secret = "client_secret=7e7ccb94afa5465abaa14a991275935a"
-redirect_uri = "redirect_uri=http://127.0.0.1:8000/test"
-url_auth = "https://graph.renren.com/oauth"
-usr_id = ""
+client_id = 'client_id=8b8031a73dc544bebcb356e3a65855d6'
+client_secret = 'client_secret=7e7ccb94afa5465abaa14a991275935a'
+redirect_uri = 'redirect_uri=http://127.0.0.1:8000/auth'
+url_auth = 'http://graph.renren.com/oauth'
 
 def get_authorize(request):
-  url_getauth = urllib2.urlopen(url_auth +
-      "/authorize?response_type=code&" + client_id + "&" +
-      redirect_uri, timeout=20)
-  get_grantcode = url_getauth.geturl()
-  return HttpResponseRedirect(get_grantcode)
+  return HttpResponseRedirect(url_auth + '/grant?response_type=code&' +
+      client_id + '&' + redirect_uri)
 
-def test(request):
-  global usr_id
+def auth(request):
   urlnow = request.get_full_path()
   code = re.search(r'code=([0-9a-zA-Z]*)', urlnow)
   auth_code = code.group(1)
-  url_getid = url_auth + "/token?grant_type=authorization_code&code=" + auth_code + "&" + client_id + "&" + client_secret + "&" + redirect_uri
+  url_getid = (url_auth + '/token?grant_type=authorization_code&code=' +
+    auth_code + '&' + client_id + '&' + client_secret + '&' + redirect_uri)
   get_id = urllib2.urlopen(url_getid, timeout=20)
   get_urltext = get_id.read()
   textfind = re.search(r'id":([0-9]*),', get_urltext)
   usr_id = textfind.group(1)
-  response = render_to_response('test.html',
-      context_instance=RequestContext(request))
+  response = HttpResponseRedirect('/test/')
   response.set_cookie('usr_id', usr_id)
   return response
 
-def test1(request):
-  response = render_to_response('test.html',
+def test(request):
+  if 'status' in request.GET:
+    status = request.GET['status']
+  else:
+    status = None
+  return render_to_response('test.html',
+      {'status' : status},
       context_instance=RequestContext(request))
-  response.set_cookie('usr_id', request.COOKIES['usr_id'])
-  return response
 
 def post(request):
-  if not request.POST:
-    response = HttpResponseRedirect('/test1/')
-    response.set_cookie('usr_id', request.COOKIES['usr_id'])
-    return response
+  for i in range(1, 46):
+    if i < 10 and 'bigfive-me-0'+str(i) not in request.POST:
+      return HttpResponseRedirect('/test?status=NOTFINISHED')
+    if i >= 10 and 'bigfive-me-'+str(i) not in request.POST:
+      return HttpResponseRedirect('/test?status=NOTFINISHED')
+
   form = MultiPartForm()
   for key in request.POST:
     form.add_field(key, request.POST[key])
@@ -67,14 +67,16 @@ def post(request):
   iter = re.finditer(r'R=([\d\.]*)&', get_url)
   list = [i.group(1) for i in iter]
   if not list:
-    response = HttpResponseRedirect('/test1/')
-    response.set_cookie('usr_id', request.COOKIES['usr_id'])
-    return response
+    return HttpResponseRedirect('/test?status=ERROR')
+
+  dic = dict(zip('OCEAN', list))
+  dic['M'] = request.POST['mark']
   fout = file(os.path.join(os.path.join(os.path.dirname(__file__), 'data'),
-    request.COOKIES['usr_id'] + ".txt"), 'w')
-  fout.write(str(list))
+    request.COOKIES['usr_id'] + '.txt'), 'w')
+  fout.write(str(dic))
+
   return render_to_response('result.html', {
-    'result' : list},
-    context_instance=RequestContext(request));
+    'result' : dic},
+    context_instance=RequestContext(request))
   #except Exception as e:
-  #  return HttpResponseRedirect('/')
+  #  return HttpResponseRedirect('/test/')

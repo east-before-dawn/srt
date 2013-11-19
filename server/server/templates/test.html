@@ -1,3 +1,11 @@
+{% if status == 'NOTFINISHED' %}
+  题目没有做完。
+{% else %}
+  {% if status == 'ERROR' %}
+    未知错误。
+  {% endif %}
+{% endif %}
+
 <FORM ACTION="post/" METHOD="post">
     {% csrf_token %}
     <tr>
