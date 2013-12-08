@@ -15,9 +15,6 @@ class Base(object):
   page_size = 20
 
   def _crawl(self, token, user_id, until_time):
-    if token is None or user_id is None:
-      return None
-
     response = []
     page = 1
     num = 0
@@ -28,6 +25,8 @@ class Base(object):
         ('pageSize', str(self.page_size)),
         ('pageNumber', str(page)),
       ]))
+      if 'error' in new_response and new_response['error'] == 403:
+        return None
       if 'response' not in new_response:
         break
       new_response = new_response['response']
@@ -58,10 +57,13 @@ class Base(object):
             ' is updated in last interval. No need to update.')
         return True
       lines = file(filename, 'r').readlines()
-    new_lines = self._normalize(self._crawl(token, user_id,
-      self._get_time(lines)))
-    if not new_lines:
+
+    response = self._crawl(token, user_id,
+      self._get_time(lines))
+    if response is None:
       return False
+    new_lines = self._normalize(response)
+
     if lines is not None:
       new_lines.extend(lines)
     reload(sys)
