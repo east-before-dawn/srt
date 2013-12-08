@@ -26,6 +26,10 @@ class Crawl(object):
       user_list = self._get_all_user()
     token_num = 0
     for user in user_list:
+      if user == '268846393':
+        continue
+      if user == '279831165':
+        continue
       for crawl_item in crawl_list:
         while (token_num < len(token_list) and not
           crawl_item.update(token_list[token_num], user, force)):
