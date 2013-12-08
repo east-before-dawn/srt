@@ -29,7 +29,7 @@ class Base(object):
         ('pageNumber', str(page)),
       ]))
       if 'response' not in new_response:
-        continue
+        break
       new_response = new_response['response']
       if not new_response:
         break
@@ -54,7 +54,7 @@ class Base(object):
     filename = path + self.name + '.dat'
     if os.path.exists(filename):
       if not force and time.time() - os.path.getmtime(filename) < interval:
-        print 'Updated in last interval. Not update.'
+        print 'Updated in last interval. No need to update.'
         return None
       lines = file(filename, 'r').readlines()
     new_lines = self._normalize(self._crawl(token, user_id,
