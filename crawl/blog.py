@@ -4,7 +4,14 @@ from base import Base
 
 __all__ = ['Blog']
 
-type_map = {'TYPE_DEFAULT':'0', 'TYPE_WAP':'1'}
+type_map = {
+  'TYPE_DEFAULT':'0',
+  'TYPE_WAP':'1',
+  'TYPE_RSS':'2',
+  'TYPE_API':'3',
+  'TYPE_OTHER':'4',
+}
+
 def access_control_map(access_control):
   if access_control == 'PUBLIC':
     return '0'
