@@ -1,7 +1,7 @@
 import os
 import argparse
 
-from setting import user_list_path, base_token
+from setting import user_list_path, token_list
 from status import Status
 from blog import Blog
 from share import Share
@@ -17,11 +17,6 @@ crawl_list = [
 ]
 
 class Crawl(object):
-  token = base_token
-
-  def set_token(self, token):
-    self.token = token
-
   def _get_all_user(self):
     for root, dirs, files in os.walk(user_list_path):
       return [f[:f.rfind('.')] for f in files]
@@ -29,17 +24,23 @@ class Crawl(object):
   def update(self, user_list=None, force=False):
     if user_list is None:
       user_list = self._get_all_user()
+    token_num = 0
     for user in user_list:
       for crawl_item in crawl_list:
-        crawl_item.update(self.token, user, force)
+        while (token_num < len(token_list) and not
+          crawl_item.update(token_list[token_num], user, force)):
+            print ("Error - Can't update user " + user +
+                ' by ' + token_list[token_num] + '.')
+            token_num += 1
+        if token_num == len(token_list):
+          print 'Error - All token can not be used now.'
+          print 'Exit.'
+          return False
+    return True
 
 if __name__ == '__main__':
   parser = argparse.ArgumentParser(
       description=''
-  )
-  parser.add_argument('-t', '--token',
-      type=str,
-      help='access token',
   )
   parser.add_argument('-u', '--user',
       type=str,
@@ -54,6 +55,4 @@ if __name__ == '__main__':
   args = parser.parse_args()
 
   crawl = Crawl()
-  if args.token is not None:
-    crawl.set_token(args.token)
   crawl.update(args.user, args.force)

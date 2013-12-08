@@ -54,13 +54,17 @@ class Base(object):
     filename = path + self.name + '.dat'
     if os.path.exists(filename):
       if not force and time.time() - os.path.getmtime(filename) < interval:
-        print 'Updated in last interval. No need to update.'
-        return None
+        print ('Info - ' + self.name + ' of User ' + user_id +
+            ' is updated in last interval. No need to update.')
+        return True
       lines = file(filename, 'r').readlines()
     new_lines = self._normalize(self._crawl(token, user_id,
       self._get_time(lines)))
+    if not new_lines:
+      return False
     if lines is not None:
       new_lines.extend(lines)
     reload(sys)
     sys.setdefaultencoding('utf-8')
     file(filename, 'w').writelines(new_lines)
+    return True

@@ -17,9 +17,8 @@ def get(url, args):
       response = urllib2.urlopen(url, timeout=urlopen_timeout).read()
       return response
     except Exception as e:
-      print 'ERROR - in url open'
+      print 'Error - In url open:'
       print e
       try_times -= 1
-  print 'ERROR - still error in urlopen, give up'
+  print 'Error - Still error in urlopen, give up.'
   return '{}'
-
