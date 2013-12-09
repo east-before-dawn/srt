@@ -13,7 +13,7 @@ crawl_list = [
     Status(),
     Blog(),
     Share(),
-    #Profile(),
+    Profile(),
 ]
 
 class Crawl(object):
