@@ -14,10 +14,10 @@ class Base(object):
   name = None
   page_size = 20
 
-  def _crawl(self, token, user_id, until_time):
+  def _crawl(self, token_list, user_id, until_time):
     response = []
     page = 1
-    num = 0
+    token = token_list[-1]
     while True:
       new_response = json.loads(get(url + self.name + '/list', [
         ('access_token', token),
@@ -26,7 +26,12 @@ class Base(object):
         ('pageNumber', str(page)),
       ]))
       if 'error' in new_response and new_response['error'] == 403:
-        return None
+        token_list.pop()
+        if not token_list:
+          print 'Error - All token can not be used now.'
+          return None
+        token = token_list[-1]
+        continue
       if 'response' not in new_response:
         break
       new_response = new_response['response']
@@ -45,7 +50,7 @@ class Base(object):
       page += 1
     return response
 
-  def update(self, token, user_id, force):
+  def update(self, token_list, user_id, force):
     path = data_path + user_id + '/'
     if not os.path.exists(path):
       os.mkdir(path)
@@ -58,7 +63,7 @@ class Base(object):
         return True
       lines = file(filename, 'r').readlines()
 
-    response = self._crawl(token, user_id,
+    response = self._crawl(token_list, user_id,
       self._get_time(lines))
     if response is None:
       return False

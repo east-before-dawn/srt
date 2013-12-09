@@ -6,7 +6,8 @@ from setting import url
 class Profile(object):
   name = 'profile'
 
-  def _crawl(self, token, user_id, until_time=None):
+  def _crawl(self, token_list, user_id, until_time=None):
+    token = token_list[-1]
     response = json.loads(get(url + 'profile/get', [
       ('access_token', token),
       ('userId', user_id),
