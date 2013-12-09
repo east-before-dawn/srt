@@ -13,7 +13,7 @@ crawl_list = [
     Status(),
     Blog(),
     Share(),
-    #Profile(),
+    Profile(),
 ]
 
 class Crawl(object):
@@ -27,15 +27,10 @@ class Crawl(object):
     token_num = 0
     for user in user_list:
       for crawl_item in crawl_list:
-        while (token_num < len(token_list) and not
-          crawl_item.update(token_list[token_num], user, force)):
-            print ("Error - Can't update user " + user +
-                ' by ' + token_list[token_num] + '.')
-            token_num += 1
-        if token_num == len(token_list):
-          print 'Error - All token can not be used now.'
-          print 'Exit.'
-          return False
+        if not crawl_item.update(token_list, user, force):
+          if not token_list:
+            print 'Exit.'
+            return False
     return True
 
 if __name__ == '__main__':

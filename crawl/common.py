@@ -17,8 +17,11 @@ def get(url, args):
       response = urllib2.urlopen(url, timeout=urlopen_timeout).read()
       return response
     except Exception as e:
+      if '403' in str(e):
+        print 'Error - Forbidden'
+        return '{"error":403}'
       print 'Error - In url open:'
       print e
       try_times -= 1
   print 'Error - Still error in urlopen, give up.'
-  return '{}'
+  return '{"error":0}'
