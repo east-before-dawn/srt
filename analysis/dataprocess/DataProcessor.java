@@ -11,7 +11,8 @@ public class DataProcessor {
 	SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	Pattern emoPattern = Pattern.compile("\\([0-9a-z\u4e00-\u9fa5]+\\)");
 	Pattern imgPattern = Pattern.compile("(img)|(gif)");
-	Matcher emoMatcher, imgMatcher;
+	Pattern chiPattern = Pattern.compile("[\u4e00-\u9fa5]");
+	Matcher emoMatcher, imgMatcher, chiMatcher;
 	/**
 	 * @param args
 	 */
@@ -21,6 +22,7 @@ public class DataProcessor {
 		StatusInfo statusInfo;
 		BlogInfo blogInfo;
 		ShareInfo shareInfo;
+		ProfileInfo profileInfo;
 		DataProcessor dp = new DataProcessor();
 		for (String personFile : files ) {
 			statusInfo = dp.getStatusInfo(personFile);
@@ -29,6 +31,8 @@ public class DataProcessor {
 			if (blogInfo!=null) System.out.println(blogInfo.toString());
 			shareInfo = dp.getShareInfo(personFile);
 			if (shareInfo!=null) System.out.println(shareInfo.toString());
+			profileInfo = dp.getProfileInfo(personFile);
+			if (profileInfo!=null) System.out.println(profileInfo.toString());
 		}
 	}
 	
@@ -43,7 +47,8 @@ public class DataProcessor {
 		int textlong = 0;
 		int emoticonsum = 0;
 		try {
-			br = new BufferedReader(new InputStreamReader(new FileInputStream(status), "utf-8"));
+			br = new BufferedReader(new InputStreamReader(
+					new FileInputStream(status), "utf-8"));
 			String content = "", temp;
 			Date date, preDate = null;
 			while ((temp = br.readLine())!=null) {
@@ -106,7 +111,8 @@ public class DataProcessor {
 		int publicnum = 0;
 		int imgnum = 0;
 		try {
-			br = new BufferedReader(new InputStreamReader(new FileInputStream(blog), "utf-8"));
+			br = new BufferedReader(new InputStreamReader(
+					new FileInputStream(blog), "utf-8"));
 			String content = "", temp;
 			Date date, preDate = null;
 			while ((temp = br.readLine())!=null) {
@@ -173,7 +179,8 @@ public class DataProcessor {
 		int commentsum = 0;
 		int timediff = 0;
 		try {
-			br = new BufferedReader(new InputStreamReader(new FileInputStream(share), "utf-8"));
+			br = new BufferedReader(new InputStreamReader(
+					new FileInputStream(share), "utf-8"));
 			String content = "", temp, url = "";
 			Date date, preDate = null;
 			while ((temp = br.readLine())!=null) {
@@ -221,6 +228,41 @@ public class DataProcessor {
 			shareInfo.setNum(0);
 		}
 		return shareInfo;
+	}
+	
+	public ProfileInfo getProfileInfo(String filename) {
+		File profile = new File("./data/"+filename+"/profile.dat");
+		System.out.println(profile.getPath());
+		if (!profile.exists()) return null;
+		ProfileInfo profileInfo = new ProfileInfo();
+		int hanzinum = 0;
+		try {
+			br = new BufferedReader(new InputStreamReader(
+					new FileInputStream(profile), "utf-8"));
+			String name = br.readLine();
+			chiMatcher = chiPattern.matcher(name);
+			while (chiMatcher.find()) hanzinum += 1;
+			
+			profileInfo.setHanziratio((double)hanzinum/name.length());
+			profileInfo.setStar(Integer.parseInt(br.readLine()));
+			profileInfo.setBasicratio(Double.parseDouble(br.readLine()));
+			profileInfo.setEduratio(Double.parseDouble(br.readLine()));
+			profileInfo.setWorknum(Integer.parseInt(br.readLine()));
+			profileInfo.setLikenum(Integer.parseInt(br.readLine()));
+			profileInfo.setAppcount(Integer.parseInt(br.readLine()));
+			profileInfo.setVisitorcount(Integer.parseInt(br.readLine()));
+			profileInfo.setPagecount(Integer.parseInt(br.readLine()));
+			profileInfo.setZhancount(Integer.parseInt(br.readLine()));
+			profileInfo.setMusiccount(Integer.parseInt(br.readLine()));
+			profileInfo.setMoviecount(Integer.parseInt(br.readLine()));
+			profileInfo.setFriendcount(Integer.parseInt(br.readLine()));
+			profileInfo.setFriendDensity(Double.parseDouble(br.readLine()));
+		} catch (UnsupportedEncodingException | FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return profileInfo;
 	}
 
 }
