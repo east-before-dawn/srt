@@ -9,12 +9,12 @@ class Share(Base):
   def _normalize(self, responses):
     res = []
     for item in responses:
-      res.extend((
-        item['title'] + '\n',
-        item['url'] + '\n',
-        item['commentCount'] + '\n',
-        item['shareTime'] + '\n',
-      ))
+      share = {}
+      share['time'] = item['shareTime']
+      share['text'] = item['title']
+      share['comment'] = item['commentCount']
+      share['url'] = item['url']
+      res.append(json.dumps(share)+'\n')
     return res
 
   def _get_time(self, lines):

@@ -9,13 +9,13 @@ class Status(Base):
   def _normalize(self, responses):
     res = []
     for item in responses:
-      res.extend((
-        item['content'] + '\n',
-        item['createTime'] + '\n',
-        str(item['shareCount']) + '\n',
-        str(item['commentCount']) + '\n',
-        str(item['sharedStatusId']) + '\n',
-      ))
+      status = {}
+      status['share'] = str(item['shareCount'])
+      status['time'] = item['createTime']
+      status['text'] = item['content']
+      status['comment'] = str(item['commentCount'])
+      status['sharedID'] = str(item['sharedStatusId'])
+      res.append(json.dumps(status)+'\n')
     return res
 
   def _get_time(self, lines):

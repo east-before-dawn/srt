@@ -23,17 +23,16 @@ class Blog(Base):
   def _normalize(self, responses):
     res = []
     for item in responses:
-      res.extend((
-        item['title'] + '\n',
-        str(len(item['content'])) + '\n',
-        item['content'] + '\n',
-        type_map[item['type']] + '\n',
-        item['createTime'] + '\n',
-        str(item['shareCount']) + '\n',
-        access_control_map(item['accessControl']) + '\n',
-        str(item['viewCount']) + '\n',
-        str(item['commentCount']) + '\n',
-      ))
+      blog = {}
+      blog['share'] = str(item['shareCount'])
+      blog['time'] = item['createTime']
+      blog['text'] = item['content']
+      blog['title'] = item['title']
+      blog['view'] = str(item['viewCount'])
+      blog['textlength'] = str(len(item['content']))
+      blog['comment'] = str(item['commentCount'])
+      blog['type'] = type_map[item['type']]
+      res.append(json.dumps(blog)+'\n')
     return res
 
   def _get_time(self, lines):

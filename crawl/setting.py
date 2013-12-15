@@ -15,10 +15,10 @@ token_list = [
   '244281|6.9b10f0399300fd3d108f22957a48dcf4.2592000.1389096000-250062710',
 ]
 
-interval = 3600*24*2
+interval = 3600*24*30
 
 user_list_path = '../server/server/data/'
-data_path = '../analysis/data/'
+data_path = '../analysis/data_json/'
 
 url = 'https://api.renren.com/v2/'
 

@@ -33,22 +33,8 @@ class Profile(Base):
     return response
 
   def _normalize(self, response):
-    return [
-        response['name'] + '\n',
-        str(response['star']) + '\n',
-        conv(response['basicInformation']) + '\n',
-        conv(response['education']) + '\n',
-        conv(response['work']) + '\n',
-        conv(response['like']) + '\n',
-        str(response['appCount']) + '\n',
-        str(response['visitorCount']) + '\n',
-        str(response['pageCount']) + '\n',
-        str(response['zhanCount']) + '\n',
-        str(response['musicCount']) + '\n',
-        str(response['movieCount']) + '\n',
-        str(response['friendCount']) + '\n',
-        #response['density'],
-    ]
+    # TODO: density
+    return [ json.dumps(response) + '\n' ]
 
   def _get_time(self, lines):
     return None
