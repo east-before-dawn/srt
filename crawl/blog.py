@@ -31,6 +31,7 @@ class Blog(Base):
       blog['view'] = str(item['viewCount'])
       blog['textlength'] = str(len(item['content']))
       blog['comment'] = str(item['commentCount'])
+      blog['access'] = access_control_map(item['accessControl'])
       blog['type'] = type_map[item['type']]
       res.append(json.dumps(blog)+'\n')
     return res
