@@ -1,13 +1,1 @@
-汪卷毛
-0
-3
-5
-0
-0
-38
-3229
-29
-12
-0
-0
-528
+{"movieCount": 0, "star": 0, "zhanCount": 12, "friendCount": 527, "visitorCount": 3234, "blogCount": 0, "emotionalState": null, "pageCount": 29, "education": [{"department": "\u8ba1\u7b97\u673a\u79d1\u5b66\u4e0e\u6280\u672f\u7cfb", "educationBackground": "COLLEGE", "name": "\u6e05\u534e\u5927\u5b66", "year": "2011"}, {"department": null, "educationBackground": "HIGHSCHOOL", "name": "\u4e03\u5b9d\u4e2d\u5b66", "year": "2008"}, {"department": null, "educationBackground": "JUNIOR", "name": "\u6d1b\u9633\u4e94\u5341\u4e94\u4e2d", "year": "2005"}, {"department": null, "educationBackground": "JUNIOR", "name": "\u6e05\u534e\u5927\u5b66", "year": "2011"}, {"department": null, "educationBackground": "PRIMARY", "name": "\u6d1b\u9633\u5e02\u897f\u5de5\u533a\u82b3\u6797\u8def\u5c0f\u5b66", "year": "1999"}], "like": null, "work": null, "albumCount": 11, "photoCount": 205, "shareCount": 103, "avatar": [{"url": "http://hdn.xnimg.cn/photos/hdn521/20130525/1220/tiny_gbLZ_f96b0003948a111a.jpg", "size": "TINY"}, {"url": "http://hdn.xnimg.cn/photos/hdn121/20130525/1215/head_OUEJ_ebd300039275113e.jpg", "size": "HEAD"}, {"url": "http://hdn.xnimg.cn/photos/hdn121/20130525/1215/main_OUEJ_ebd300039275113e.jpg", "size": "MAIN"}, {"url": "http://hdn.xnimg.cn/photos/hdn121/20130525/1215/large_OUEJ_ebd300039275113e.jpg", "size": "LARGE"}], "appCount": 38, "statusCount": 197, "basicInformation": {"homeTown": null, "birthday": "1992-8-31", "sex": "FEMALE"}, "musicCount": 0, "id": 403722801, "name": "\u6c6a\u5377\u6bdb"}

@@ -1,13 +1,1 @@
-靳康华
-1
-3
-4
-0
-7
-64
-10679
-54
-3
-0
-0
-482
+{"movieCount": 0, "star": 1, "zhanCount": 3, "friendCount": 486, "visitorCount": 10681, "blogCount": 70, "emotionalState": null, "pageCount": 54, "education": [{"department": "\u5176\u5b83\u9662\u7cfb", "educationBackground": "COLLEGE", "name": "\u540d\u53e4\u5c4b\u5927\u5b66", "year": "2011"}, {"department": null, "educationBackground": "HIGHSCHOOL", "name": "\u4e0a\u6d77\u5e02\u4e0a\u6d77\u4e2d\u5b66", "year": "2008"}, {"department": null, "educationBackground": "JUNIOR", "name": "\u5e02\u5317\u521d\u4e2d", "year": "0"}, {"department": null, "educationBackground": "PRIMARY", "name": "\u4e0a\u6d77\u5e02\u6c11\u529e\u626c\u6ce2\u5916\u56fd\u8bed\u5c0f\u5b66", "year": "1999"}], "like": [{"catagory": "INTEREST", "name": "\u804a\u5929, \u7761\u89c9, \u6d82\u9e26, \u4e66\u6cd5, \u5409\u4ed6, K\u6b4c, \u7535\u73a9, \u5199\u6253\u6cb9\u8bd7, \u5199\u5c0f\u8bf4"}, {"catagory": "MUSIC", "name": "\u4f60\u70b9\u4e86, \u6211\u5c31\u80fd\u5531"}, {"catagory": "BOOK", "name": "\u60b2\u4f24\u9006\u6d41\u6210\u6cb3, \u590f\u81f3\u672a\u81f3, \u5929\u5802\u5411\u5de6\u6df1\u5733\u5411\u53f3, \u82b1\u95e8\u592a\u5b50, \u6ce1\u6cab\u4e4b\u590f, \u660e\u82e5\u6653\u6eaa, \u70c8\u706b\u5982\u6b4c"}, {"catagory": "MOVIE", "name": "\u661f\u7a7a, Mission Impossible, Titanic, The Twilight Saga, \u8001\u7537\u5b69"}, {"catagory": "GAME", "name": "war III solo, Counter Strike 1.5 &amp; 1.6, NFS \u2164, Heroes III, \u53e3\u888b\u5996\u602a, QQffo, QQT, CrossFire, \u5927\u8bdd\u6218\u56fd"}, {"catagory": "CARTOON", "name": "\u540d\u4fa6\u63a2\u67ef\u5357, \u795e\u5947\u5b9d\u8d1d, \u6570\u7801\u5b9d\u8d1d, \u4e2d\u534e\u5c0f\u5f53\u5bb6, \u5934\u6587\u5b57D"}, {"catagory": "SPORT", "name": "\u6e38\u6cf3, \u6e9c\u51b0, \u7bee\u7403, \u7f51\u7403"}], "work": null, "albumCount": 18, "photoCount": 1703, "shareCount": 356, "avatar": [{"url": "http://hdn.xnimg.cn/photos/hdn421/20130331/2245/tiny_c49s_f94b00013213111a.jpg", "size": "TINY"}, {"url": "http://hdn.xnimg.cn/photos/hdn421/20130331/2245/head_c49s_f94b00013213111a.jpg", "size": "HEAD"}, {"url": "http://hdn.xnimg.cn/photos/hdn421/20130331/2245/main_c49s_f94b00013213111a.jpg", "size": "MAIN"}, {"url": "http://hdn.xnimg.cn/photos/hdn421/20130331/2245/large_c49s_f94b00013213111a.jpg", "size": "LARGE"}], "appCount": 64, "statusCount": 684, "basicInformation": {"homeTown": {"province": "\u4e0a\u6d77", "city": "\u95f8\u5317\u533a"}, "birthday": "1992-10-8", "sex": "MALE"}, "musicCount": 0, "id": 261570854, "name": "\u9773\u5eb7\u534e"}
