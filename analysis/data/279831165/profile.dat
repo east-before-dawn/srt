@@ -1,13 +1,1 @@
-李博
-1
-3
-7
-0
-7
-34
-118413
-35
-4
-0
-0
-1814
+{"movieCount": 0, "star": 1, "zhanCount": 4, "friendCount": 1822, "visitorCount": 118676, "blogCount": 77, "emotionalState": "INLOVE", "pageCount": 35, "education": [{"department": "\u8ba1\u7b97\u673a\u79d1\u5b66\u4e0e\u6280\u672f\u7cfb", "educationBackground": "COLLEGE", "name": "\u6e05\u534e\u5927\u5b66", "year": "2011"}, {"department": "\u7ecf\u6d4e\u7ba1\u7406\u5b66\u9662", "educationBackground": "COLLEGE", "name": "\u6e05\u534e\u5927\u5b66", "year": "2012"}, {"department": null, "educationBackground": "HIGHSCHOOL", "name": "\u8000\u534e\u4e2d\u5b66", "year": "2008"}, {"department": null, "educationBackground": "JUNIOR", "name": "\u8000\u534e\u5609\u8bda\u56fd\u9645\u4e2d\u5b66", "year": "2008"}, {"department": null, "educationBackground": "JUNIOR", "name": "\u5929\u6d25\u5e02\u8000\u534e\u4e2d\u5b66", "year": "2008"}, {"department": null, "educationBackground": "PRIMARY", "name": "\u5929\u6d25\u5e02\u5b9e\u9a8c\u5c0f\u5b66", "year": "2000"}, {"department": null, "educationBackground": "PRIMARY", "name": "\u77f3\u5bb6\u5e84\u5e02\u5408\u4f5c\u8def\u5c0f\u5b66", "year": "1999"}], "like": [{"catagory": "INTEREST", "name": "\u5728\u5bb6\u7761\u89c9~"}, {"catagory": "MUSIC", "name": "\u6ca1\u4ec0\u4e48\u7279\u5b9a\u7684\u3002\u3002\u3002"}, {"catagory": "BOOK", "name": "\u540d\u4fa6\u63a2\u67ef\u5357\u7684\u6f2b\u753b"}, {"catagory": "MOVIE", "name": "\u53d8\u5f62\u91d1\u521a \u54c8\u5229.\u6ce2\u7279.....\u8fd8\u6709\u597d\u591a~~"}, {"catagory": "GAME", "name": "\u8f69\u8f95\u5251, \u4ed9\u5251\u4e09, \u56db, \u53e4\u5251\u5947\u8c2d"}, {"catagory": "CARTOON", "name": "\u540d\u4fa6\u63a2\u67ef\u5357\uff01"}, {"catagory": "SPORT", "name": "\u61d2\u5f97\u52a8\u3002\u3002\u3002\u3002"}], "work": null, "albumCount": 87, "photoCount": 7168, "shareCount": 2630, "avatar": [{"url": "http://hdn.xnimg.cn/photos/hdn321/20131121/2015/tiny_CkFO_47450002caa5111a.jpg", "size": "TINY"}, {"url": "http://hdn.xnimg.cn/photos/hdn421/20131121/2015/h_head_t1f9_887c00000061111a.jpg", "size": "HEAD"}, {"url": "http://hdn.xnimg.cn/photos/hdn421/20131121/2015/h_main_fski_887c00000061111a.jpg", "size": "MAIN"}, {"url": "http://hdn.xnimg.cn/photos/hdn421/20131121/2015/h_large_QEU8_887c00000061111a.jpg", "size": "LARGE"}], "appCount": 34, "statusCount": 5953, "basicInformation": {"homeTown": {"province": "\u6cb3\u5317", "city": "\u77f3\u5bb6\u5e84\u5e02"}, "birthday": "1992-12-23", "sex": "FEMALE"}, "musicCount": 0, "id": 279831165, "name": "\u674e\u535a"}

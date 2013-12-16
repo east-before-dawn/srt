@@ -1,13 +1,1 @@
-冯一
-0
-3
-4
-0
-0
-0
-6221
-24
-0
-0
-0
-999
+{"movieCount": 0, "star": 0, "zhanCount": 0, "friendCount": 995, "visitorCount": 6222, "blogCount": 6, "emotionalState": null, "pageCount": 24, "education": [{"department": "\u4fe1\u606f\u79d1\u5b66\u6280\u672f\u5b66\u9662", "educationBackground": "COLLEGE", "name": "\u5317\u4eac\u5927\u5b66", "year": "2010"}, {"department": null, "educationBackground": "HIGHSCHOOL", "name": "\u4f59\u59da\u4e2d\u5b66", "year": "2007"}, {"department": null, "educationBackground": "JUNIOR", "name": "\u4f59\u59da\u5e02\u5b50\u9675\u4e2d\u5b66", "year": "2004"}, {"department": null, "educationBackground": "PRIMARY", "name": "\u4f59\u59da\u5e02\u821c\u6c34\u5c0f\u5b66", "year": "1998"}], "like": null, "work": null, "albumCount": 8, "photoCount": 0, "shareCount": 0, "avatar": [{"url": "http://hdn.xnimg.cn/photos/hdn521/20120101/2000/tiny_qbXg_119434n019118.jpg", "size": "TINY"}, {"url": "http://hdn.xnimg.cn/photos/hdn121/20120101/2000/h_head_3i1u_7a83000221bb2f75.jpg", "size": "HEAD"}, {"url": "http://hdn.xnimg.cn/photos/hdn121/20120101/2000/h_main_Yj8F_7a83000221bb2f75.jpg", "size": "MAIN"}, {"url": "http://hdn.xnimg.cn/photos/hdn121/20120101/2000/h_large_RXPP_7a83000221bb2f75.jpg", "size": "LARGE"}], "appCount": 0, "statusCount": 313, "basicInformation": {"homeTown": {"province": "\u6d59\u6c5f", "city": "\u5b81\u6ce2\u5e02"}, "birthday": "1991-4-19", "sex": "MALE"}, "musicCount": 0, "id": 266320388, "name": "\u51af\u4e00"}

@@ -1,13 +1,1 @@
-刘晨
-1
-3
-5
-0
-0
-27
-2556
-108
-29
-0
-0
-644
+{"movieCount": 0, "star": 1, "zhanCount": 29, "friendCount": 645, "visitorCount": 2568, "blogCount": 6, "emotionalState": null, "pageCount": 109, "education": [{"department": "\u8ba1\u7b97\u673a\u79d1\u5b66\u4e0e\u6280\u672f\u7cfb", "educationBackground": "COLLEGE", "name": "\u6e05\u534e\u5927\u5b66", "year": "2011"}, {"department": "\u7cbe\u5bc6\u4eea\u5668\u4e0e\u673a\u68b0\u5b66\u7cfb", "educationBackground": "COLLEGE", "name": "\u6e05\u534e\u5927\u5b66", "year": "2011"}, {"department": null, "educationBackground": "HIGHSCHOOL", "name": "\u6d77\u5b89\u9ad8\u4e2d", "year": "2008"}, {"department": null, "educationBackground": "JUNIOR", "name": "\u6d77\u9675\u4e2d\u5b66", "year": "2005"}, {"department": null, "educationBackground": "PRIMARY", "name": "\u6d77\u5b89\u53bf\u5b9e\u9a8c\u5c0f\u5b66", "year": "1999"}], "like": null, "work": null, "albumCount": 18, "photoCount": 576, "shareCount": 500, "avatar": [{"url": "http://hdn.xnimg.cn/photos/hdn521/20110801/1005/tiny_srmJ_89975p019118.jpg", "size": "TINY"}, {"url": "http://hdn.xnimg.cn/photos/hdn521/20110727/1645/h_head_laas_7a4d00037f8c2f76.jpg", "size": "HEAD"}, {"url": "http://hdn.xnimg.cn/photos/hdn521/20110727/1645/h_main_9UZ3_7a4d00037f8c2f76.jpg", "size": "MAIN"}, {"url": "http://hdn.xnimg.cn/photos/hdn521/20110727/1645/h_large_OBHL_7a4d00037f8c2f76.jpg", "size": "LARGE"}], "appCount": 27, "statusCount": 488, "basicInformation": {"homeTown": {"province": "\u6c5f\u82cf", "city": "\u5357\u901a\u5e02"}, "birthday": "1993-1-21", "sex": "MALE"}, "musicCount": 0, "id": 389493804, "name": "\u5218\u6668"}

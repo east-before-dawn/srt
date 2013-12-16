@@ -1,13 +1,1 @@
-陈翱
-1
-3
-4
-0
-0
-0
-3000
-56
-0
-0
-0
-617
+{"movieCount": 0, "star": 1, "zhanCount": 0, "friendCount": 616, "visitorCount": 3003, "blogCount": 0, "emotionalState": null, "pageCount": 56, "education": [{"department": "\u8ba1\u7b97\u673a\u79d1\u5b66\u4e0e\u6280\u672f\u7cfb", "educationBackground": "COLLEGE", "name": "\u6e05\u534e\u5927\u5b66", "year": "2010"}, {"department": null, "educationBackground": "HIGHSCHOOL", "name": "\u77f3\u5bb6\u5e84\u4e8c\u4e2d\u5b9e\u9a8c\u5b66\u6821", "year": "2007"}, {"department": null, "educationBackground": "HIGHSCHOOL", "name": "\u6e05\u534e\u5927\u5b66", "year": "2010"}, {"department": null, "educationBackground": "JUNIOR", "name": "\u535a\u51ef\u4e2d\u5b66", "year": "2004"}], "like": null, "work": null, "albumCount": 7, "photoCount": 0, "shareCount": 0, "avatar": [{"url": "http://hdn.xnimg.cn/photos/hdn121/20130603/0020/tiny_X7cp_ec330003efac113e.jpg", "size": "TINY"}, {"url": "http://hdn.xnimg.cn/photos/hdn421/20130603/0020/h_head_azt4_93130000057e113e.jpg", "size": "HEAD"}, {"url": "http://hdn.xnimg.cn/photos/hdn421/20130603/0020/h_main_0wcW_93130000057e113e.jpg", "size": "MAIN"}, {"url": "http://hdn.xnimg.cn/photos/hdn421/20130603/0020/h_large_AW13_93130000057e113e.jpg", "size": "LARGE"}], "appCount": 0, "statusCount": 484, "basicInformation": {"homeTown": {"province": "\u6cb3\u5317", "city": "\u90a2\u53f0\u5e02"}, "birthday": "1993-11-24", "sex": "MALE"}, "musicCount": 0, "id": 341310538, "name": "\u9648\u7ff1"}

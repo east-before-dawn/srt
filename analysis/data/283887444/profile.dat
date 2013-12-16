@@ -1,13 +1,1 @@
-王鹤男
-1
-3
-7
-0
-0
-100
-18175
-12
-3
-3
-0
-1424
+{"movieCount": 0, "star": 1, "zhanCount": 3, "friendCount": 1427, "visitorCount": 18187, "blogCount": 133, "emotionalState": "INLOVE", "pageCount": 12, "education": [{"department": "\u8ba1\u7b97\u673a\u79d1\u5b66\u4e0e\u6280\u672f\u7cfb", "educationBackground": "COLLEGE", "name": "\u6e05\u534e\u5927\u5b66", "year": "2009"}, {"department": "\u8ba1\u7b97\u673a\u79d1\u5b66\u4e0e\u6280\u672f\u7cfb", "educationBackground": "COLLEGE", "name": "\u6e05\u534e\u5927\u5b66", "year": "2009"}, {"department": null, "educationBackground": "HIGHSCHOOL", "name": "\u8fbd\u9633\u4e00\u9ad8\u4e2d", "year": "2006"}, {"department": null, "educationBackground": "HIGHSCHOOL", "name": "\u6e05\u534e\u5927\u5b66", "year": "2009"}, {"department": null, "educationBackground": "JUNIOR", "name": "\u706f\u5854\u5e02\u7b2c\u4e8c\u521d\u7ea7\u4e2d\u5b66", "year": "2003"}, {"department": null, "educationBackground": "PRIMARY", "name": "\u706f\u5854\u5e02\u6587\u5316\u5c0f\u5b66", "year": "2002"}, {"department": null, "educationBackground": "PRIMARY", "name": "\u706f\u5854\u5e02\u6587\u5316\u5c0f\u5b66", "year": "2002"}], "like": null, "work": null, "albumCount": 126, "photoCount": 4887, "shareCount": 1613, "avatar": [{"url": "http://hdn.xnimg.cn/photos/hdn321/20130914/2145/tiny_skFZ_1335000137bb113e.jpg", "size": "TINY"}, {"url": "http://hdn.xnimg.cn/photos/hdn321/20130914/2145/head_skFZ_1335000137bb113e.jpg", "size": "HEAD"}, {"url": "http://hdn.xnimg.cn/photos/hdn321/20130914/2145/main_skFZ_1335000137bb113e.jpg", "size": "MAIN"}, {"url": "http://hdn.xnimg.cn/photos/hdn321/20130914/2145/original_skFZ_1335000137bb113e.jpg", "size": "LARGE"}], "appCount": 100, "statusCount": 1817, "basicInformation": {"homeTown": {"province": "\u8fbd\u5b81", "city": "\u8fbd\u9633\u5e02"}, "birthday": "1990-8-29", "sex": "MALE"}, "musicCount": 3, "id": 283887444, "name": "\u738b\u9e64\u7537"}

@@ -1,13 +1,1 @@
-张天扬
-1
-3
-3
-0
-0
-0
-7006
-32
-0
-0
-0
-959
+{"movieCount": 0, "star": 1, "zhanCount": 0, "friendCount": 964, "visitorCount": 7024, "blogCount": 20, "emotionalState": null, "pageCount": 33, "education": [{"department": "\u4fe1\u606f\u5b66\u9662", "educationBackground": "COLLEGE", "name": "\u6e05\u534e\u5927\u5b66", "year": "2009"}, {"department": null, "educationBackground": "HIGHSCHOOL", "name": "\u6c5f\u82cf\u7701\u5929\u4e00\u4e2d\u5b66&amp;&#35;40;\u5206\u6821&amp;&#35;41;", "year": "2006"}, {"department": null, "educationBackground": "JUNIOR", "name": "\u9547\u6c5f\u5b9e\u9a8c\u5b66\u6821", "year": "2003"}], "like": null, "work": null, "albumCount": 15, "photoCount": 0, "shareCount": 0, "avatar": [{"url": "http://hdn.xnimg.cn/photos/hdn421/20130620/1305/tiny_9geb_f91b00049ae5111a.jpg", "size": "TINY"}, {"url": "http://hdn.xnimg.cn/photos/hdn321/20130620/1305/h_head_kwQz_a3ac00000073113e.jpg", "size": "HEAD"}, {"url": "http://hdn.xnimg.cn/photos/hdn321/20130620/1305/h_main_ETbz_a3ac00000073113e.jpg", "size": "MAIN"}, {"url": "http://hdn.xnimg.cn/photos/hdn321/20130620/1305/h_large_KPJu_a3ac00000073113e.jpg", "size": "LARGE"}], "appCount": 0, "statusCount": 778, "basicInformation": {"homeTown": {"province": "\u6c5f\u82cf", "city": "\u9547\u6c5f\u5e02"}, "birthday": "1991-4-5", "sex": "MALE"}, "musicCount": 0, "id": 279628654, "name": "\u5f20\u5929\u626c"}

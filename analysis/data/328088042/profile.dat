@@ -1,13 +1,1 @@
-戴炜明
-1
-3
-2
-0
-0
-0
-358
-3
-0
-0
-0
-155
+{"movieCount": 0, "star": 1, "zhanCount": 0, "friendCount": 155, "visitorCount": 358, "blogCount": 1, "emotionalState": null, "pageCount": 3, "education": [{"department": "\u8f6f\u4ef6\u5b66\u9662", "educationBackground": "COLLEGE", "name": "\u4e2d\u5c71\u5927\u5b66", "year": "2009"}, {"department": null, "educationBackground": "HIGHSCHOOL", "name": "\u77f3\u95e8\u4e2d\u5b66\uff08\u603b\u90e8\uff09", "year": "2006"}], "like": null, "work": null, "albumCount": 1, "photoCount": 0, "shareCount": 0, "avatar": [{"url": "http://hdn.xnimg.cn/photos/hdn521/20100827/1640/h_tiny_Uhqe_5b10000081d62f76.jpg", "size": "TINY"}, {"url": "http://hdn.xnimg.cn/photos/hdn521/20100827/1640/h_head_NSei_5b10000081d62f76.jpg", "size": "HEAD"}, {"url": "http://hdn.xnimg.cn/photos/hdn521/20100827/1640/h_main_AAZ7_5b10000081d62f76.jpg", "size": "MAIN"}, {"url": "http://hdn.xnimg.cn/photos/hdn521/20100827/1640/h_large_fLos_5b10000081d62f76.jpg", "size": "LARGE"}], "appCount": 0, "statusCount": 3, "basicInformation": {"homeTown": {"province": "\u5e7f\u4e1c", "city": "\u4f5b\u5c71\u5e02"}, "birthday": "1991-7-7", "sex": "MALE"}, "musicCount": 0, "id": 328088042, "name": "\u6234\u709c\u660e"}

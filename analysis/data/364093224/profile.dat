@@ -1,13 +1,1 @@
-方凌锐[0]
-0
-3
-5
-0
-0
-0
-10030
-77
-0
-0
-0
-1062
+{"movieCount": 0, "star": 0, "zhanCount": 0, "friendCount": 1070, "visitorCount": 10069, "blogCount": 37, "emotionalState": null, "pageCount": 77, "education": [{"department": "\u8ba1\u7b97\u673a\u79d1\u5b66\u4e0e\u6280\u672f\u7cfb", "educationBackground": "COLLEGE", "name": "\u6e05\u534e\u5927\u5b66", "year": "2011"}, {"department": null, "educationBackground": "HIGHSCHOOL", "name": "\u5357\u9675\u53bf\u7b2c\u4e00\u4e2d\u5b66", "year": "2008"}, {"department": null, "educationBackground": "JUNIOR", "name": "\u5357\u9675\u53bf\u57ce\u5173\u9547\u521d\u7ea7\u4e2d\u5b66", "year": "2005"}, {"department": null, "educationBackground": "PRIMARY", "name": "\u4e00\u5c0f", "year": "1999"}, {"department": null, "educationBackground": "PRIMARY", "name": "\u5357\u9675\u53bf\u57ce\u5173\u9547\u7b2c\u4e00\u5c0f\u5b66", "year": "1999"}], "like": null, "work": null, "albumCount": 9, "photoCount": 0, "shareCount": 0, "avatar": [{"url": "http://hdn.xnimg.cn/photos/hdn221/20131201/1950/tiny_Z76A_472d00030dbf111a.jpg", "size": "TINY"}, {"url": "http://hdn.xnimg.cn/photos/hdn221/20131201/1950/head_Z76A_472d00030dbf111a.jpg", "size": "HEAD"}, {"url": "http://hdn.xnimg.cn/photos/hdn221/20131201/1950/main_Z76A_472d00030dbf111a.jpg", "size": "MAIN"}, {"url": "http://hdn.xnimg.cn/photos/hdn221/20131201/1950/large_Z76A_472d00030dbf111a.jpg", "size": "LARGE"}], "appCount": 0, "statusCount": 1082, "basicInformation": {"homeTown": {"province": "\u5b89\u5fbd", "city": "\u829c\u6e56\u5e02"}, "birthday": "1994-10-14", "sex": "MALE"}, "musicCount": 0, "id": 364093224, "name": "\u65b9\u51cc\u9510[0]"}
