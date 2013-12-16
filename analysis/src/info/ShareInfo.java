@@ -1,5 +1,6 @@
+package info;
 //define share info
-public class ShareInfo {
+public class ShareInfo extends DataInfo{
 	private int sharenum;
 	private double photoratio;
 	private double blogratio;
@@ -33,5 +34,29 @@ public class ShareInfo {
 		return "{sharenum="+sharenum+" photoratio="+photoratio+" blogratio="
 				+blogratio+" videoratio="+videoratio+" otherratio="+otherratio+
 				" avgcmt="+avgcmt+" timediff="+timediff+"}";
+	}
+	@Override
+	public String getAttribute() {
+		StringBuilder ret = new StringBuilder();
+		ret.append("@attribute ShareNum numeric\n");
+		ret.append("@attribute PhotoRatio numeric\n");
+		ret.append("@attribute BlogRatio numeric\n");
+		ret.append("@attribute VideoRatio numeric\n");
+		ret.append("@attribute OtherRatio numeric\n");
+		ret.append("@attribute AvgShareCmt numeric\n");
+		ret.append("@attribute ShareTimeDiff numeric\n");		
+		return ret.toString();
+	}
+	@Override
+	public String getData() {
+		StringBuilder ret = new StringBuilder();
+		ret.append(sharenum).append(",");
+		ret.append(photoratio).append(",");
+		ret.append(blogratio).append(",");
+		ret.append(videoratio).append(",");
+		ret.append(otherratio).append(",");
+		ret.append(avgcmt).append(",");
+		ret.append(timediff);
+		return ret.toString();
 	}
 }
