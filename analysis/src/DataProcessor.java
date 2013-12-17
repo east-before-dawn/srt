@@ -245,8 +245,8 @@ public class DataProcessor {
 		int blogsum = 0;
 		int videosum = 0;
 		int othersum = 0;
-		int commentsum = 0;
-		int timediff = 0;
+		int commentsum = 0, maxcmt = 0;
+		int timediff = 0, mintimediff = Integer.MAX_VALUE;
 		JSONObject obj;
 		try {
 			br = new BufferedReader(new InputStreamReader(
@@ -256,8 +256,13 @@ public class DataProcessor {
 			while ((temp = br.readLine())!=null) {
 				obj = (JSONObject) parser.parse(temp);
 				content = (String) obj.get("text");
-				url = (String) obj.get("url");				
-				commentsum += Integer.parseInt(((String) obj.get("comment")));
+				url = (String) obj.get("url");
+				
+				int cmt = Integer.parseInt(((String) obj.get("comment")));
+				if (maxcmt < cmt)
+					maxcmt = cmt;
+				commentsum += cmt;
+				
 				if (url.contains("photo")) photosum += 1;
 				else if (url.contains("blog")) blogsum += 1;
 				else if (url.contains("youku")||url.contains("www.56.com")
@@ -267,8 +272,12 @@ public class DataProcessor {
 				else othersum += 1;
 
 				date = df.parse((String)obj.get("time"));
-				if (num > 0)
-					timediff += (preDate.getTime()-date.getTime())/1000;
+				if (num > 0) {
+					long diff = (preDate.getTime()-date.getTime())/1000;
+					if(mintimediff > diff)
+						mintimediff = (int) diff;
+					timediff += diff;
+				}
 				preDate = df.parse((String)obj.get("time"));
 				num ++;
 			}
@@ -282,7 +291,9 @@ public class DataProcessor {
 		if (num > 0) {
 			shareInfo.setNum(num);
 			shareInfo.setAvgcmt((double)commentsum/num);
+			shareInfo.setMaxcmt(maxcmt);
 			shareInfo.setTimediff((double)timediff/(Math.max(num-1, 1)));
+			shareInfo.setMintimediff(mintimediff);
 			shareInfo.setPhotoratio((double)photosum/num);
 			shareInfo.setBlogratio((double)blogsum/num);
 			shareInfo.setVideoratio((double)videosum/num);

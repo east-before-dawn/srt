@@ -7,7 +7,9 @@ public class ShareInfo extends DataInfo{
 	private double videoratio;
 	private double otherratio;
 	private double avgcmt;
+	private int maxcmt;
 	private double timediff;
+	private int mintimediff;
 	
 	public void setNum(int i) {sharenum = i;}
 	public int getNum() {return sharenum;}
@@ -27,13 +29,19 @@ public class ShareInfo extends DataInfo{
 	public void setAvgcmt(double d) {avgcmt = d;}
 	public double getAvgcmt() {return avgcmt;}
 	
+	public void setMaxcmt(int i) {maxcmt = i;}
+	public int getMaxcmt() {return maxcmt;}
+	
 	public void setTimediff(double d) {timediff = d;}
 	public double getTimediff() {return timediff;}
+	
+	public void setMintimediff(int i) {mintimediff = i;}
+	public double getMintimediff() {return mintimediff;}
 	
 	public String toString() {
 		return "{sharenum="+sharenum+" photoratio="+photoratio+" blogratio="
 				+blogratio+" videoratio="+videoratio+" otherratio="+otherratio+
-				" avgcmt="+avgcmt+" timediff="+timediff+"}";
+				" maxcmt="+maxcmt+" mintimediff="+mintimediff+"}";
 	}
 	@Override
 	public String getAttribute() {
@@ -44,7 +52,9 @@ public class ShareInfo extends DataInfo{
 		ret.append("@attribute VideoRatio numeric\n");
 		ret.append("@attribute OtherRatio numeric\n");
 		ret.append("@attribute AvgShareCmt numeric\n");
-		ret.append("@attribute ShareTimeDiff numeric\n");		
+		ret.append("@attribute MaxShareCmt numeric\n");
+		ret.append("@attribute ShareTimeDiff numeric\n");
+		ret.append("@attribute MinShareTimeDiff numeric\n");
 		return ret.toString();
 	}
 	@Override
@@ -56,7 +66,9 @@ public class ShareInfo extends DataInfo{
 		ret.append(videoratio).append(",");
 		ret.append(otherratio).append(",");
 		ret.append(avgcmt).append(",");
-		ret.append(timediff);
+		ret.append(maxcmt).append(",");
+		ret.append(timediff).append(",");
+		ret.append(mintimediff);
 		return ret.toString();
 	}
 }
