@@ -23,7 +23,7 @@ public class ProfileInfo extends DataInfo{
 	public int getStar() {return star;}
 	
 	public void setBasicinfo(int i) {basicinfo = i;}
-	public double getNBasicinfo() {return basicinfo;}
+	public double getBasicinfo() {return basicinfo;}
 	
 	public void setEducation(int i) {education = i;}
 	public double getEducation() {return education;}
@@ -38,7 +38,7 @@ public class ProfileInfo extends DataInfo{
 	public int getAppcount() {return appcount;}
 	
 	public void setVisitorcount(int i) {visitorcount = i;}
-	public int getVisitor() {return visitorcount;}
+	public int getVisitorcount() {return visitorcount;}
 	
 	public void setPagecount(int i) {pagecount = i;}
 	public int getPagecount() {return pagecount;}

@@ -77,8 +77,8 @@ public class BlogInfo extends DataInfo{
 		ret.append("@attribute MaxBlogView numeric\n");
 		ret.append("@attribute BlogTimeDiff numeric\n");
 		ret.append("@attribute MinBlogTimeDiff numeric\n");
-		ret.append("@attribute TitleLength numeric\n");
-		ret.append("@attribute TextLength numeric\n");
+		ret.append("@attribute BlogTitleLength numeric\n");
+		ret.append("@attribute BlogTextLength numeric\n");
 		ret.append("@attribute PublicRatio numeric\n");
 		ret.append("@attribute AvgImg numeric\n");
 		ret.append("@attribute MaxImg numeric\n");

@@ -1,3 +1,5 @@
+package tools;
+
 import info.BlogInfo;
 import info.ProfileInfo;
 import info.ShareInfo;
@@ -5,7 +7,6 @@ import info.StatusInfo;
 import info.UserSample;
 
 import java.io.*;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -14,7 +15,7 @@ import java.util.regex.Pattern;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.*;
 
 public class DataProcessor {
 	BufferedReader br;
@@ -39,16 +40,16 @@ public class DataProcessor {
 		
 		for (String personFile : files ) {
 			UserSample sample = new UserSample();
-			statusInfo = dp.getStatusInfo(personFile);
+			statusInfo = dp.getStatusInfo("./data_json/"+personFile);
 			if (statusInfo!=null) System.out.println(statusInfo.toString());
 			sample.addInfo(0, statusInfo);
-			blogInfo = dp.getBlogInfo(personFile);
+			blogInfo = dp.getBlogInfo("./data_json/"+personFile);
 			if (blogInfo!=null) System.out.println(blogInfo.toString());
 			sample.addInfo(1, blogInfo);
-			shareInfo = dp.getShareInfo(personFile);
+			shareInfo = dp.getShareInfo("./data_json/"+personFile);
 			if (shareInfo!=null) System.out.println(shareInfo.toString());
 			sample.addInfo(2, shareInfo);
-			profileInfo = dp.getProfileInfo(personFile);
+			profileInfo = dp.getProfileInfo("./data_json/"+personFile);
 			if (profileInfo!=null) System.out.println(profileInfo.toString());
 			sample.addInfo(3, profileInfo);
 			try {
@@ -74,7 +75,7 @@ public class DataProcessor {
 	}
 	
 	public StatusInfo getStatusInfo(String filename) {
-		File status = new File("./data_json/"+filename+"/status.dat");
+		File status = new File(filename+"/status.dat");
 		System.out.println(status.getPath());
 		if (!status.exists()) return new StatusInfo();
 		int num = 0;
@@ -96,11 +97,15 @@ public class DataProcessor {
 				date = df.parse((String) obj.get("time"));
 				if (num > 0) {
 					long diff = (preDate.getTime()-date.getTime())/1000;
-					if (mintimediff > diff)
-						mintimediff = (int) diff;
-					timediff += diff;
+					if (diff > 0) {
+						if (mintimediff > diff)
+							mintimediff = (int) diff;
+						timediff += diff;
+						preDate = df.parse((String) obj.get("time"));
+					}
+				} else {
+					preDate = df.parse((String) obj.get("time"));
 				}
-				preDate = df.parse((String) obj.get("time"));
 				
 				int share = Integer.parseInt((String) obj.get("share"));
 				if (maxshare < share)
@@ -125,7 +130,9 @@ public class DataProcessor {
 			}
 		} catch (UnsupportedEncodingException | FileNotFoundException e) {
 			e.printStackTrace();
-		} catch (IOException | ParseException | org.json.simple.parser.ParseException e) {
+		} catch (IOException | ParseException  e) {
+			e.printStackTrace();
+		} catch (java.text.ParseException e) {
 			e.printStackTrace();
 		}
 		StatusInfo statusInfo = new StatusInfo();
@@ -141,12 +148,13 @@ public class DataProcessor {
 			statusInfo.setAvgemoticon((double)emoticonsum/num);
 		} else {
 			statusInfo.setNum(0);
+			statusInfo.setMintimediff(Integer.MAX_VALUE);
 		}
 		return statusInfo;
 	}
 	
 	public BlogInfo getBlogInfo(String filename) {
-		File blog = new File("./data_json/"+filename+"/blog.dat");
+		File blog = new File(filename+"/blog.dat");
 		System.out.println(blog.getPath());
 		if (!blog.exists()) return new BlogInfo();
 		int num = 0;
@@ -179,15 +187,18 @@ public class DataProcessor {
 					maximg = curimg;
 				imgnum += curimg;
 				
-				String time = (String) obj.get("time");
-				date = df.parse(time.substring(0, time.length()-4));
+				date = df.parse((String) obj.get("time"));
 				if (num > 0) {
 					long diff = (preDate.getTime()-date.getTime())/1000;
-					if (mintimediff > diff)
-						mintimediff = (int) diff;
-					timediff += diff;
+					if (diff > 0) {
+						if (mintimediff > diff)
+							mintimediff = (int) diff;
+						timediff += diff;
+						preDate = df.parse((String) obj.get("time"));
+					}
+				} else {
+					preDate = df.parse((String) obj.get("time"));
 				}
-				preDate = df.parse(time.substring(0, time.length()-4));
 				
 				int share = Integer.parseInt((String) obj.get("share"));
 				if (maxshare < share)
@@ -210,7 +221,9 @@ public class DataProcessor {
 			}
 		} catch (UnsupportedEncodingException | FileNotFoundException e) {
 			e.printStackTrace();
-		} catch (IOException | ParseException | org.json.simple.parser.ParseException e) {
+		} catch (IOException | ParseException e) {
+			e.printStackTrace();
+		} catch (java.text.ParseException e) {
 			e.printStackTrace();
 		}
 		
@@ -232,12 +245,13 @@ public class DataProcessor {
 			blogInfo.setMaximg(maximg);
 		} else {
 			blogInfo.setNum(0);
+			blogInfo.setMintimediff(Integer.MAX_VALUE);
 		}
 		return blogInfo;
 	}
 	
 	public ShareInfo getShareInfo(String filename) {
-		File share = new File("./data_json/"+filename+"/share.dat");
+		File share = new File(filename+"/share.dat");
 		System.out.println(share.getPath());
 		if (!share.exists()) return new ShareInfo();
 		int num = 0;
@@ -271,19 +285,25 @@ public class DataProcessor {
 						url.contains("iqiyi")) videosum += 1;
 				else othersum += 1;
 
-				date = df.parse((String)obj.get("time"));
+				date = df.parse((String) obj.get("time"));
 				if (num > 0) {
 					long diff = (preDate.getTime()-date.getTime())/1000;
-					if(mintimediff > diff)
-						mintimediff = (int) diff;
-					timediff += diff;
+					if (diff > 0) {
+						if (mintimediff > diff)
+							mintimediff = (int) diff;
+						timediff += diff;
+						preDate = df.parse((String) obj.get("time"));
+					}
+				} else {
+					preDate = df.parse((String) obj.get("time"));
 				}
-				preDate = df.parse((String)obj.get("time"));
 				num ++;
 			}
 		} catch (UnsupportedEncodingException | FileNotFoundException e) {
 			e.printStackTrace();
-		} catch (IOException | ParseException | org.json.simple.parser.ParseException e) {
+		} catch (IOException | ParseException e) {
+			e.printStackTrace();
+		} catch (java.text.ParseException e) {
 			e.printStackTrace();
 		}
 		
@@ -300,12 +320,13 @@ public class DataProcessor {
 			shareInfo.setOtherratio((double)othersum/num);
 		} else {
 			shareInfo.setNum(0);
+			shareInfo.setMintimediff(Integer.MAX_VALUE);
 		}
 		return shareInfo;
 	}
 	
 	public ProfileInfo getProfileInfo(String filename) {
-		File profile = new File("./data_json/"+filename+"/profile.dat");
+		File profile = new File(filename+"/profile.dat");
 		System.out.println(profile.getPath());
 		if (!profile.exists()) return new ProfileInfo();
 		ProfileInfo profileInfo = new ProfileInfo();

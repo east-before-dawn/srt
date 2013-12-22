@@ -1,7 +1,4 @@
-import info.BlogInfo;
-import info.ProfileInfo;
-import info.ShareInfo;
-import info.StatusInfo;
+package tools;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -13,9 +10,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
