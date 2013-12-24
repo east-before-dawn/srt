@@ -6,6 +6,7 @@ from status import Status
 from blog import Blog
 from share import Share
 from profile import Profile
+from album import Album
 
 __all__ = ['Crawl']
 
@@ -14,6 +15,7 @@ crawl_list = [
     Blog(),
     Share(),
     Profile(),
+    Album(),
 ]
 
 class Crawl(object):

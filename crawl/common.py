@@ -19,6 +19,7 @@ def get(url, args):
     except Exception as e:
       if '403' in str(e):
         print 'Error - Forbidden'
+        print e
         return '{"error":403}'
       print 'Error - In url open:'
       print e
