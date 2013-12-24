@@ -7,6 +7,7 @@ from blog import Blog
 from share import Share
 from profile import Profile
 from album import Album
+from photo import Photo
 
 __all__ = ['Crawl']
 
@@ -16,6 +17,7 @@ crawl_list = [
     Share(),
     Profile(),
     Album(),
+    Photo(),
 ]
 
 class Crawl(object):
@@ -26,13 +28,20 @@ class Crawl(object):
   def update(self, user_list=None, force=False):
     if user_list is None:
       user_list = self._get_all_user()
-    token_num = 0
     for user in user_list:
       for crawl_item in crawl_list:
         if not crawl_item.update(token_list, user, force):
           if not token_list:
             print 'Exit.'
             return False
+    return True
+
+  def update_img(self, user_list=None):
+    if user_list is None:
+      user_list = self._get_all_user()
+    photo = Photo()
+    for user in user_list:
+      photo.update_data(user)
     return True
 
 if __name__ == '__main__':
@@ -49,7 +58,15 @@ if __name__ == '__main__':
       default=False,
       help='force ignore the last modified time or not',
   )
+  parser.add_argument('-i', '--img',
+      action='store_true',
+      default=False,
+      help='special crawl: images',
+  )
   args = parser.parse_args()
 
   crawl = Crawl()
-  crawl.update(args.user, args.force)
+  if args.img:
+    crawl.update_img(args.user)
+  else:
+    crawl.update(args.user, args.force)

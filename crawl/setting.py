@@ -19,6 +19,7 @@ interval = 3600*24*60
 
 user_list_path = '../server/server/data/'
 data_path = '../analysis/data_json/'
+img_data_path = '../analysis/data_img/'
 
 url = 'https://api.renren.com/v2/'
 
