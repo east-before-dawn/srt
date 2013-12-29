@@ -5,6 +5,9 @@ import info.ProfileInfo;
 import info.ShareInfo;
 import info.StatusInfo;
 import info.UserSample;
+import info.photoInfo;
+
+import srt.*;
 
 import java.io.*;
 import java.text.SimpleDateFormat;
@@ -16,6 +19,8 @@ import java.util.regex.Pattern;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.*;
+
+import srt.photo_feature;
 
 public class DataProcessor {
 	BufferedReader br;
@@ -34,6 +39,7 @@ public class DataProcessor {
 		BlogInfo blogInfo;
 		ShareInfo shareInfo;
 		ProfileInfo profileInfo;
+		photoInfo PhotoInfo;
 		DataProcessor dp = new DataProcessor();
 		ArrayList<UserSample> samples = new ArrayList<UserSample>();
 		BufferedReader reader;
@@ -52,6 +58,9 @@ public class DataProcessor {
 			profileInfo = dp.getProfileInfo("./data_json/"+personFile);
 			if (profileInfo!=null) System.out.println(profileInfo.toString());
 			sample.addInfo(3, profileInfo);
+	        PhotoInfo = dp.getPhotoInfo("./data/"+personFile);
+	        if (PhotoInfo!=null) System.out.println(PhotoInfo.toString());
+	        sample.addInfo(4, PhotoInfo);
 			try {
 				reader = new BufferedReader(new InputStreamReader(
 						new FileInputStream("./result/"+personFile+".txt")));
@@ -251,7 +260,7 @@ public class DataProcessor {
 	}
 	
 	public ShareInfo getShareInfo(String filename) {
-		File share = new File(filename+"/share.dat");
+	    File share = new File(filename+"/share.dat");
 		System.out.println(share.getPath());
 		if (!share.exists()) return new ShareInfo();
 		int num = 0;
@@ -364,5 +373,76 @@ public class DataProcessor {
 		}
 		return profileInfo;
 	}
+	
+	   public photoInfo getPhotoInfo(String filename) {
+	     File dir = new File(filename);
+	     String[] dirFiles = dir.list();
+	     int albumnum = 0;
+	     int num = 0;
+	     int facenum = 0;
+	     double f1=0,f2= 0,f3 = 0;
+	     double colors[] = new double[256];
+	     for (String albumName : dirFiles ) {
+	       if (albumName.endsWith("dat")) continue;
+	       albumnum++;
+	       File dir1 = new File(filename + "/" + albumName);
+	       String[] photoFiles = dir1.list();
+	       for (String photoName : photoFiles) {
+	         num ++;
+	         String photo = filename+"/"+albumName+"/"+photoName;
+	         JSONObject obj;
+	         try {
+	           Object[] result = null;
+	           photo_feature a = new photo_feature();
+	           result = a.face_detection(1, photo.toString());
+	           facenum += Integer.parseInt(result[0].toString());
+	           //System.out.println(facenum);
+	           result = a.color_f(1, photo);
+	           String data[]=result[0].toString().split(" ");
+	           int k = 0;
+	           for(String i : data) {
+	             if (i.startsWith("0")) {
+	               colors[k]+=Double.parseDouble(i);
+	               k++;
+	             }
+	           }
+	           
+	           /*result = a.texture_f(1, photo);
+               data=result[0].toString().split(" ");
+               k = 0;
+               for(String i : data) {
+                 if (i.startsWith("0")) {
+                   double x = Double.parseDouble(i);
+                   if (k == 0) f1+=x;
+                   else if (k == 1) f2 +=x;
+                   else f3+=x;
+                   k++;
+                 }
+               }*/
+               //System.out.println(photo);
+	         }
+	         catch (Exception e) {
+	         }
+	       }
+	     }
+	     photoInfo PhotoInfo = new photoInfo();
+	        if (num > 0) {
+	            for (int i=0; i < 256; ++i)
+	              colors[i] /= num;
+	            
+	            PhotoInfo.setNum(num);
+	            PhotoInfo.setAlbumNum(albumnum);
+	            PhotoInfo.setAvgPhotoNum(num/albumnum);
+	            PhotoInfo.setFaceNum(facenum);
+	            PhotoInfo.setAvgFaceNum(facenum / (num));
+	            PhotoInfo.setAvgColorInfo(colors);
+	            PhotoInfo.setF1(0);
+	            PhotoInfo.setF2(0);
+	            PhotoInfo.setF3(0);
+	        } else {
+	            PhotoInfo.setNum(0);
+	        }
+	        return PhotoInfo;
+	    }
 
 }

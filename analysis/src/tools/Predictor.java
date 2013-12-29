@@ -32,7 +32,9 @@ public class Predictor {
 		if (shareInfo!=null) System.out.println(shareInfo.toString());
 		ProfileInfo profileInfo = dp.getProfileInfo(id);
 		if (profileInfo!=null) System.out.println(profileInfo.toString());
-		
+		photoInfo PhotoInfo = dp.getPhotoInfo(id);
+        if (PhotoInfo!=null) System.out.println(PhotoInfo.toString());
+        
 		try {
 		ArffLoader loader = new ArffLoader();
 		loader.setSource(new File("./agreeableness.arff"));
@@ -87,6 +89,21 @@ public class Predictor {
 		values[43] = profileInfo.getMoviecount();
 		values[44] = profileInfo.getFriendcount();
 		values[45] = profileInfo.getFriendDensity();
+		values[46] = PhotoInfo.getNum();
+		values[47] = PhotoInfo.getAlbumNum();
+		values[48] = PhotoInfo.getAvgPhotoNum();
+		values[49] = PhotoInfo.getFaceNum();
+		values[50] = PhotoInfo.getAvgFaceNum();
+		values[51] = PhotoInfo.getF1();
+		values[52] = PhotoInfo.getF2();
+		values[53] = PhotoInfo.getF3();
+		double colorf[] = PhotoInfo.getAvgColorInfo();
+		int k = 54;
+		for (double c:colorf) {
+		  values[k] = c;
+		  k++;
+		}
+        
 		
 		Instance ins = new Instance(1.0, values);
 		
