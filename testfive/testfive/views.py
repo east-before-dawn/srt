@@ -1,7 +1,6 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response
 
-url = 'http://www.outofservice.com/bigfive/'
 client_id = 'client_id=f0b371ec381143f4b1f2913f177f5b6e'
 client_secret = 'client_secret=c0a70822ea9547c4a02ef7bd30f01c57'
 #redirect_uri = 'redirect_uri=http://166.111.139.110:8000/auth'
@@ -19,6 +18,8 @@ def get_authorize(request):
 
 def auth(request):
   urlnow = request.get_full_path()
+  import re
+  import urllib2
   code = re.search(r'code=([0-9a-zA-Z]*)', urlnow)
   auth_code = code.group(1)
   url_getid = (url_auth + '/token?grant_type=authorization_code&code=' +
@@ -33,23 +34,31 @@ def auth(request):
   response.set_cookie('token', token)
   return response
 
-def crawl(usr_id, token):
+def get_data(usr_id, token):
   import sys
-  sys.path.append('../../')
+  sys.path.append('../')
   from crawl import Crawl
   c = Crawl()
+  print 'Start web crawl.'
   c.update([usr_id], token_list=[token])
+  print 'Crawl is finished.'
+
   import os
-  os.system('java -Djava.ext.dirs=../../predict/lib -jar ../../predict.predictor.jar ../../analysis/data_json/'+usr_id)
+  print 'Start analysis.'
+  #os.system('java -Djava.ext.dirs=../../predict/lib -jar ../../predict/predictor.jar ../../analysis/data_json/'+usr_id)
+  os.system('java -Djava.ext.dirs=./lib -jar predictor.jar ../../analysis/data_json/'+usr_id)
+  print 'Analysis is finished.'
+
   global five_result
-  with open('../../predict/predict_result/'+usr_id+'.txt') as ifile:
+  #with open('../../predict/predict_result/'+usr_id+'.txt') as ifile:
+  with open('predict_result/'+usr_id+'.txt') as ifile:
     five_result = eval(ifile.read())
   global finished
   finished = True
 
 def load(request):
   import thread
-  thread.start_new_thread(crawl, (
+  thread.start_new_thread(get_data, (
     request.COOKIES['usr_id'], request.COOKIES['token']))
   global finished
   if finished:
