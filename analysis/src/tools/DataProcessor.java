@@ -407,7 +407,7 @@ public class DataProcessor {
 	             }
 	           }
 	           
-	           /*result = a.texture_f(1, photo);
+	           result = a.texture_f(1, photo);
                data=result[0].toString().split(" ");
                k = 0;
                for(String i : data) {
@@ -418,7 +418,7 @@ public class DataProcessor {
                    else f3+=x;
                    k++;
                  }
-               }*/
+               }
                //System.out.println(photo);
 	         }
 	         catch (Exception e) {
@@ -436,9 +436,9 @@ public class DataProcessor {
 	            PhotoInfo.setFaceNum(facenum);
 	            PhotoInfo.setAvgFaceNum(facenum / (num));
 	            PhotoInfo.setAvgColorInfo(colors);
-	            PhotoInfo.setF1(0);
-	            PhotoInfo.setF2(0);
-	            PhotoInfo.setF3(0);
+	            PhotoInfo.setF1(f1/num);
+	            PhotoInfo.setF2(f2/num);
+	            PhotoInfo.setF3(f3/num);
 	        } else {
 	            PhotoInfo.setNum(0);
 	        }
