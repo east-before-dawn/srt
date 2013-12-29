@@ -25,7 +25,7 @@ class Crawl(object):
     for root, dirs, files in os.walk(user_list_path):
       return [f[:f.rfind('.')] for f in files]
 
-  def update(self, user_list=None, force=False):
+  def update(self, user_list=None, force=False, token_list=token_list):
     if user_list is None:
       user_list = self._get_all_user()
     for user in user_list:
