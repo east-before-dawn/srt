@@ -131,7 +131,8 @@ public class Predictor {
 		
 		File path = new File("./predict_result");
 		if (!path.exists()) path.mkdir();
-		String userToken = id.substring(id.lastIndexOf('/'));
+		File dataJson = new File(id);
+		String userToken = dataJson.getName();
 		FileWriter writer = new FileWriter(new File("./predict_result/"+userToken+".txt"));
 		writer.write(obj.toJSONString());
 		writer.close();
