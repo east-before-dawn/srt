@@ -41,6 +41,7 @@ class Crawl(object):
     photo = Photo()
     for user in user_list:
       album.update(token_list, user, force)
+      photo.update(token_list, user, force)
       photo.update_data(user)
     return True
 
