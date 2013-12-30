@@ -5,6 +5,7 @@ import info.ProfileInfo;
 import info.ShareInfo;
 import info.StatusInfo;
 import info.UserSample;
+import info.WordInfo;
 import info.photoInfo;
 
 import srt.*;
@@ -29,6 +30,9 @@ public class DataProcessor {
 	Pattern imgPattern = Pattern.compile("(img)|(gif)");
 	Pattern chiPattern = Pattern.compile("[\u4e00-\u9fa5]");
 	Pattern doublePattern = Pattern.compile("\\d\\.(\\d)+");
+	Splitter splitter = new Splitter();
+	WordCounter wc = new WordCounter("lexicon/positive.txt",
+			"lexicon/negative.txt");
 	Matcher emoMatcher, imgMatcher, chiMatcher;
 	JSONParser parser = new JSONParser();
 	
@@ -40,6 +44,7 @@ public class DataProcessor {
 		ShareInfo shareInfo;
 		ProfileInfo profileInfo;
 		photoInfo PhotoInfo;
+		WordInfo wordInfo;
 		DataProcessor dp = new DataProcessor();
 		ArrayList<UserSample> samples = new ArrayList<UserSample>();
 		BufferedReader reader;
@@ -58,9 +63,12 @@ public class DataProcessor {
 			profileInfo = dp.getProfileInfo("./data_json/"+personFile);
 			if (profileInfo!=null) System.out.println(profileInfo.toString());
 			sample.addInfo(3, profileInfo);
-	        PhotoInfo = dp.getPhotoInfo("./data/"+personFile);
-	        if (PhotoInfo!=null) System.out.println(PhotoInfo.toString());
-	        sample.addInfo(4, PhotoInfo);
+			wordInfo = dp.getWordInfo("./data_json/"+personFile);
+			if (wordInfo!=null) System.out.println(wordInfo.toString());
+			sample.addInfo(4, wordInfo);
+			//PhotoInfo = dp.getPhotoInfo("./data/"+personFile);
+	        //if (PhotoInfo!=null) System.out.println(PhotoInfo.toString());
+	        //sample.addInfo(4, PhotoInfo);
 			try {
 				reader = new BufferedReader(new InputStreamReader(
 						new FileInputStream("./result/"+personFile+".txt")));
@@ -374,7 +382,58 @@ public class DataProcessor {
 		return profileInfo;
 	}
 	
-	   public photoInfo getPhotoInfo(String filename) {
+	public WordInfo getWordInfo(String filename) {
+		File status = new File(filename+"/status.dat");
+		if (!status.exists()) return new WordInfo();
+		int num = 0;
+		int posWordSum = 0, negWordSum = 0;
+		double posStatusNum = 0, negStatusNum = 0;
+		JSONObject obj;
+		try {
+			br = new BufferedReader(new InputStreamReader(
+					new FileInputStream(status), "utf-8"));
+			String temp;
+			while((temp = br.readLine()) != null) {
+				num++;
+				obj = (JSONObject) parser.parse(temp);
+				String text = (String) obj.get("text");
+				if (text.contains("转自"))
+					text = text.substring(0, text.indexOf("转自"));
+				String splittedText = splitter.splitString(text);
+				
+				int pos = wc.countPosWord(splittedText);
+				posWordSum += pos;
+				int neg = wc.countNegWord(splittedText);
+				negWordSum += neg;
+				if (pos > neg) posStatusNum += 1;
+				else if (pos < neg) negStatusNum += 1;
+				else {
+					posStatusNum += 0.5;
+					negStatusNum += 0.5;
+				}
+				if (num == 100) break;
+			}			
+		} catch (UnsupportedEncodingException | FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException | ParseException e) {
+			e.printStackTrace();
+		}
+		WordInfo wordInfo = new WordInfo();
+		if (num == 0) {
+			wordInfo.setPosWordNum(0);
+			wordInfo.setNegWordNum(0);
+			wordInfo.setPosStatusRatio(0.5);
+			wordInfo.setNegStatusRatio(0.5);
+		} else {
+			wordInfo.setPosWordNum((double)posWordSum/num);
+			wordInfo.setNegWordNum((double)negWordSum/num);
+			wordInfo.setPosStatusRatio(posStatusNum/num);
+			wordInfo.setNegStatusRatio(negStatusNum/num);
+		}
+		return wordInfo;
+	}
+	
+	public photoInfo getPhotoInfo(String filename) {
 	     File dir = new File(filename);
 	     String[] dirFiles = dir.list();
 	     int albumnum = 0;

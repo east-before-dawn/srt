@@ -6,6 +6,7 @@ import java.io.IOException;
 
 import org.json.simple.JSONObject;
 
+import weka.classifiers.functions.GaussianProcesses;
 import weka.classifiers.rules.M5Rules;
 import weka.core.Instance;
 import weka.core.Instances;
@@ -32,15 +33,21 @@ public class Predictor {
 		if (shareInfo!=null) System.out.println(shareInfo.toString());
 		ProfileInfo profileInfo = dp.getProfileInfo(id);
 		if (profileInfo!=null) System.out.println(profileInfo.toString());
-		photoInfo PhotoInfo = dp.getPhotoInfo(id);
-        if (PhotoInfo!=null) System.out.println(PhotoInfo.toString());
+		WordInfo wordInfo = dp.getWordInfo(id);
+		if (wordInfo!=null) System.out.println(wordInfo.toString());
+		//photoInfo PhotoInfo = dp.getPhotoInfo(id);
+        //if (PhotoInfo!=null) System.out.println(PhotoInfo.toString());
         
 		try {
 		ArffLoader loader = new ArffLoader();
-		loader.setSource(new File("./agreeableness.arff"));
+		loader.setSource(new File("agreeableness.arff"));
 		Instances data = loader.getDataSet();
 		data.setClassIndex(data.numAttributes() - 1);
-		M5Rules clsf = new M5Rules();
+		M5Rules m5Clsf = new M5Rules();
+		GaussianProcesses gpClsf = new GaussianProcesses();
+		//String options = "-L 1.0 -N 0 -K 'weka.classifiers." +
+		//		"functions.supportVector.RBFKernel -C 250007 -G 1.0'";
+		//gpClsf.setOptions(options.split(" "));
 		
 		double[] values = new double[data.numAttributes()];
 		values[0] = statusInfo.getNum();
@@ -89,7 +96,11 @@ public class Predictor {
 		values[43] = profileInfo.getMoviecount();
 		values[44] = profileInfo.getFriendcount();
 		values[45] = profileInfo.getFriendDensity();
-		values[46] = PhotoInfo.getNum();
+		values[46] = wordInfo.getPosWordNum();
+		values[47] = wordInfo.getNegWordNum();
+		values[48] = wordInfo.getPosStatusRatio();
+		values[49] = wordInfo.getNegStatusRatio();
+		/*values[46] = PhotoInfo.getNum();
 		values[47] = PhotoInfo.getAlbumNum();
 		values[48] = PhotoInfo.getAvgPhotoNum();
 		values[49] = PhotoInfo.getFaceNum();
@@ -102,44 +113,45 @@ public class Predictor {
 		for (double c:colorf) {
 		  values[k] = c;
 		  k++;
-		}
+		}*/
         
 		
 		Instance ins = new Instance(1.0, values);
 		
-		clsf.buildClassifier(data);
-		double AScore = clsf.classifyInstance(ins);
+		gpClsf.buildClassifier(data);
+		double AScore = gpClsf.classifyInstance(ins);
 		System.out.println(AScore);
 		
-		loader.setSource(new File("./conscientiousness.arff"));
+		loader.setSource(new File("conscientiousness.arff"));
 		data = loader.getDataSet();
 		data.setClassIndex(data.numAttributes() - 1);
-		clsf.buildClassifier(data);
-		double CScore = clsf.classifyInstance(ins);
+		gpClsf.buildClassifier(data);
+		double CScore = gpClsf.classifyInstance(ins);
 		System.out.println(CScore);
 		
-		loader.setSource(new File("./extraversion.arff"));
+		loader.setSource(new File("extraversion.arff"));
 		data = loader.getDataSet();
 		data.setClassIndex(data.numAttributes() - 1);
-		clsf.buildClassifier(data);
-		double EScore = clsf.classifyInstance(ins);
+		gpClsf.buildClassifier(data);
+		double EScore = gpClsf.classifyInstance(ins);
 		System.out.println(EScore);
 		
-		loader.setSource(new File("./openness.arff"));
+		loader.setSource(new File("openness.arff"));
 		data = loader.getDataSet();
 		data.setClassIndex(data.numAttributes() - 1);
-		clsf.buildClassifier(data);
-		double OScore = clsf.classifyInstance(ins);
+		gpClsf.buildClassifier(data);
+		double OScore = gpClsf.classifyInstance(ins);
 		System.out.println(OScore);
 		
-		loader.setSource(new File("./neuroticism.arff"));
+		loader.setSource(new File("neuroticism.arff"));
 		data = loader.getDataSet();
 		data.setClassIndex(data.numAttributes() - 1);
-		clsf.buildClassifier(data);
-		double NScore = clsf.classifyInstance(ins);
+		gpClsf.buildClassifier(data);
+		double NScore = gpClsf.classifyInstance(ins);
 		System.out.println(NScore);
 		
 		JSONObject obj = new JSONObject();
+		obj.put("model", "GaussianProcess");
 		obj.put("A", AScore);
 		obj.put("C", CScore);
 		obj.put("E", EScore);
