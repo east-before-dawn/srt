@@ -3,6 +3,8 @@ __all__ = [
   'interval',
   'user_list_path',
   'data_path',
+  'img_data_path',
+  'voice_data_path',
   'url',
   'urlopen_timeout',
   'urlopen_try_times',
@@ -20,6 +22,7 @@ interval = 3600*24*2
 user_list_path = '../server/server/data/'
 data_path = '../analysis/data_json/'
 img_data_path = '../analysis/data_img/'
+voice_data_path = '../analysis/data_voice/'
 
 url = 'https://api.renren.com/v2/'
 

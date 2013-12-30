@@ -5,7 +5,7 @@ from setting import urlopen_timeout, urlopen_try_times
 
 __all__ = ['url', 'get', 'crawl_by_list']
 
-def get(url, args):
+def get(url, args={}):
   url += '?'
   for k, v in args:
     url += k + '=' + v + '&'
