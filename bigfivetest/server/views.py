@@ -39,7 +39,7 @@ def get_data(usr_id, token):
   import os
   print 'Start analysis.'
   #os.system('java -Djava.ext.dirs=../../predict/lib -jar ../../predict/predictor.jar ../../analysis/data_json/'+usr_id)
-  os.system('java -Djava.ext.dirs=./lib -jar predictor.jar ../../analysis/data_json/'+usr_id)
+  os.system('java -Djava.ext.dirs=./lib -jar predictor.jar ../analysis/data_json/'+usr_id)
   print 'Analysis is finished.'
 
   global five_result

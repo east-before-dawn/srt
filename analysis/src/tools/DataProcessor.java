@@ -382,6 +382,7 @@ public class DataProcessor {
 	     int facenum = 0;
 	     double f1=0,f2= 0,f3 = 0;
 	     double colors[] = new double[256];
+	     if (dirFiles.length > 0) {
 	     for (String albumName : dirFiles ) {
 	       if (albumName.endsWith("dat")) continue;
 	       albumnum++;
@@ -407,23 +408,24 @@ public class DataProcessor {
 	             }
 	           }
 	           
-	           result = a.texture_f(1, photo);
+	           /*result = a.texture_f(1, photo);
                data=result[0].toString().split(" ");
                k = 0;
                for(String i : data) {
                  if (i.startsWith("0")) {
                    double x = Double.parseDouble(i);
-                   if (k == 0) f1+=x;
-                   else if (k == 1) f2 +=x;
-                   else f3+=x;
+                   if (k == 0) f1= f1 +x;
+                   else if (k == 1) f2 =f2 +x;
+                   else f3= f3 +x;
                    k++;
                  }
-               }
+               }*/
                //System.out.println(photo);
 	         }
 	         catch (Exception e) {
 	         }
 	       }
+	     }
 	     }
 	     photoInfo PhotoInfo = new photoInfo();
 	        if (num > 0) {
@@ -432,13 +434,17 @@ public class DataProcessor {
 	            
 	            PhotoInfo.setNum(num);
 	            PhotoInfo.setAlbumNum(albumnum);
-	            PhotoInfo.setAvgPhotoNum(num/albumnum);
+	            PhotoInfo.setAvgPhotoNum((double)num/(double)albumnum);
 	            PhotoInfo.setFaceNum(facenum);
-	            PhotoInfo.setAvgFaceNum(facenum / (num));
+	            PhotoInfo.setAvgFaceNum((double)facenum/(double)num);
 	            PhotoInfo.setAvgColorInfo(colors);
-	            PhotoInfo.setF1(f1/num);
-	            PhotoInfo.setF2(f2/num);
-	            PhotoInfo.setF3(f3/num);
+	            PhotoInfo.setF1(0);
+	            PhotoInfo.setF2(0);
+	            PhotoInfo.setF3(0);
+                
+	            //PhotoInfo.setF1((double)f1/(double)num);
+	            //PhotoInfo.setF2((double)f2/(double)num);
+	            //PhotoInfo.setF3((double)f3/(double)num);
 	        } else {
 	            PhotoInfo.setNum(0);
 	        }
