@@ -19,5 +19,5 @@ class Status(Base):
     return res
 
   def _get_time(self, lines):
-    if lines is not None and len(lines) > 1:
-      return lines[1][:-1]
+    if lines:
+      return json.loads(lines[0])['time']

@@ -44,5 +44,4 @@ class Album(Base):
     return [json.dumps(item) + '\n' for item in responses]
 
   def _get_time(self, lines):
-    if lines is not None and len(lines) > 3:
-      return lines[3][:-1]
+    return None

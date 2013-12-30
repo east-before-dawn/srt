@@ -16,8 +16,6 @@ crawl_list = [
     Blog(),
     Share(),
     Profile(),
-    Album(),
-    Photo(),
 ]
 
 class Crawl(object):
@@ -36,11 +34,13 @@ class Crawl(object):
             return False
     return True
 
-  def update_img(self, user_list=None):
+  def update_img(self, user_list=None, force=False):
     if user_list is None:
       user_list = self._get_all_user()
+    album = Album()
     photo = Photo()
     for user in user_list:
+      album.update(token_list, user, force)
       photo.update_data(user)
     return True
 
@@ -67,6 +67,6 @@ if __name__ == '__main__':
 
   crawl = Crawl()
   if args.img:
-    crawl.update_img(args.user)
+    crawl.update_img(args.user, args.force)
   else:
     crawl.update(args.user, args.force)

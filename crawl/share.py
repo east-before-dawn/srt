@@ -18,5 +18,5 @@ class Share(Base):
     return res
 
   def _get_time(self, lines):
-    if lines is not None:
-      return lines[3][:-1]
+    if lines:
+      return json.loads(lines[0])['time']

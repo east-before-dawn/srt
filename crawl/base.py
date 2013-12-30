@@ -8,7 +8,8 @@ from setting import data_path, url, interval
 
 __all__ = ['Base']
 
-conv = lambda time: time.strptime(time, '%Y-%m-%d %H:%M:%S')
+conv = lambda t: time.strptime(t, '%Y-%m-%d %H:%M:%S')
+conv2 = lambda t: time.strptime(t, '%Y-%m-%d %H:%M:%S:000')
 
 class Base(object):
   name = None
@@ -18,6 +19,8 @@ class Base(object):
     response = []
     page = 1
     token = token_list[-1]
+    if until_time is not None:
+      conv_until_time = conv(until_time)
     while True:
       new_response = json.loads(get(url + self.name + '/list', [
         ('access_token', token),
@@ -38,13 +41,24 @@ class Base(object):
       if not new_response:
         break
       if until_time is not None:
-        conv_until_time = conv(until_time)
-        if conv(new_response[-1]['createTime']) <= conv_until_time:
-          for item in new_response:
-            if item['createTime'] <= conv_until_time:
-              break
-          response.append(item)
-          return response
+        try:
+          if conv(new_response[-1]['createTime']) <= conv_until_time:
+            for item in new_response:
+              if item['createTime'] <= conv_until_time:
+                break
+            response.append(item)
+            return response
+        except Exception, e:
+          pass
+        try:
+          if conv2(new_response[-1]['createTime']) <= conv_until_time:
+            for item in new_response:
+              if item['createTime'] <= conv_until_time:
+                break
+            response.append(item)
+            return response
+        except Exception, e:
+          pass
       else:
         response.extend(new_response)
       page += 1

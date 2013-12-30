@@ -8,7 +8,7 @@ import urllib2
 import sys
 import os
 
-from tools import MultiPartForm
+from draw import draw_it
 
 url = 'http://www.outofservice.com/bigfive/'
 client_id = 'client_id=d8f59b2af38f49e895ab39a30f2fdf33'
@@ -28,7 +28,6 @@ def get_authorize(request):
       client_id + '&' + redirect_uri)
 
 def get_data(usr_id, token):
-  import sys
   sys.path.append('../')
   from crawl import Crawl
   c = Crawl()
@@ -36,7 +35,6 @@ def get_data(usr_id, token):
   c.update([usr_id], token_list=[token])
   print 'Crawl is finished.'
 
-  import os
   print 'Start analysis.'
   #os.system('java -Djava.ext.dirs=../../predict/lib -jar ../../predict/predictor.jar ../../analysis/data_json/'+usr_id)
   os.system('java -Djava.ext.dirs=./lib -jar predictor.jar ../analysis/data_json/'+usr_id)
@@ -51,8 +49,6 @@ def get_data(usr_id, token):
 
 def auth(request):
   urlnow = request.get_full_path()
-  import re
-  import urllib2
   code = re.search(r'code=([0-9a-zA-Z]*)', urlnow)
   auth_code = code.group(1)
   url_getid = (url_auth + '/token?grant_type=authorization_code&code=' +
@@ -65,12 +61,11 @@ def auth(request):
   response = HttpResponseRedirect('/load/')
   response.set_cookie('usr_id', usr_id)
   response.set_cookie('token', token)
+  thread.start_new_thread(get_data, (
+    request.COOKIES['usr_id'], request.COOKIES['token']))
   return response
 
 def load(request):
-  import thread
-  thread.start_new_thread(get_data, (
-    request.COOKIES['usr_id'], request.COOKIES['token']))
   global finished
   if finished:
     return HttpResponseRedirect('/result/')
@@ -78,5 +73,8 @@ def load(request):
     return render_to_response('load.html')
 
 def result(request):
+  if not finished:
+    return HttpResponseRedirect('/')
+  draw_it(five_result)
   return render_to_response('result.html',
       {'result':five_result})
