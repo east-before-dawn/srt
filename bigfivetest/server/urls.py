@@ -10,6 +10,7 @@ urlpatterns = patterns('',
     (r'^auth/$', auth),
     (r'^load/$', load),
     (r'^result/$', result),
+    (r'^img/(.*)$', img),
     # Examples:
     # url(r'^$', 'server.views.home', name='home'),
     # url(r'^server/', include('server.foo.urls')),
