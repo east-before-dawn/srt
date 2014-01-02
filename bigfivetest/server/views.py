@@ -26,9 +26,12 @@ def get_authorize(request):
 def get_data(usr_id, token):
   sys.path.append('../')
   from crawl import Crawl
+  import time
   c = Crawl()
   print 'Start web crawl.'
   c.update([usr_id], token_list=[token])
+  c.update_img([usr_id], token_list=[token])
+  c.update_voice([usr_id], token_list=[token])
   print 'Crawl is finished.'
 
   print 'Start analysis.'
@@ -57,8 +60,7 @@ def auth(request):
   response = HttpResponseRedirect('/load/')
   response.set_cookie('usr_id', usr_id)
   response.set_cookie('token', token)
-  thread.start_new_thread(get_data, (
-    request.COOKIES['usr_id'], request.COOKIES['token']))
+  thread.start_new_thread(get_data, (usr_id, token))
   return response
 
 def load(request):

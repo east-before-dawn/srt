@@ -2,6 +2,10 @@ import os
 import sys
 import json
 import re
+import time
+import urllib
+import urllib2
+import cookielib
 
 from base import Base
 from common import get
@@ -12,8 +16,23 @@ __all__ = ['Photo']
 class Voice(Base):
   name = 'voice'
 
+  def _login(self):
+    cj = cookielib.LWPCookieJar()
+    opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cj))
+    urllib2.install_opener(opener)
+    opener.open('http://www.renren.com/PLogin.do', urllib.urlencode({
+      'email':'CatherineBell@163.com',
+      'password':'CatherineBella',
+    }))
+
   def _crawl(self, user_id, album_id):
+    self._login()
     page = get('http://photo.renren.com/photo/'+user_id+'/album-'+album_id)
+    first_photo_url = re.search('http://photo.renren.com/photo/'+user_id+
+        '/photo-.*false', page).group()
+    page = get(first_photo_url)
+    file_url = re.findall('voiceUrl":"(.*?.mp3)"', page)
+    return [url+'\n' for url in file_url]
 
   def _get_album(self, user_id):
     with open(data_path+user_id+'/album.dat') as ifile:
@@ -47,8 +66,6 @@ class Voice(Base):
           lines = ifile.readlines()
 
       new_lines = self._crawl(user_id, album)
-      if response is None:
-        return False
 
       if lines is not None:
         new_lines.extend(lines)
@@ -66,7 +83,7 @@ class Voice(Base):
       lines = ifile.readlines()
     return [line.strip() for line in lines]
 
-  def update_voice(self, user_id):
+  def update_data(self, user_id):
     print 'get voices of user ' + user_id
     album_list = self._get_album(user_id)
     for album in album_list:
