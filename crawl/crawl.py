@@ -8,6 +8,7 @@ from share import Share
 from profile import Profile
 from album import Album
 from photo import Photo
+from voice import Voice
 
 __all__ = ['Crawl']
 
@@ -34,7 +35,7 @@ class Crawl(object):
             return False
     return True
 
-  def update_img(self, user_list=None, force=False):
+  def update_img(self, user_list=None, force=False, token_list=token_list):
     if user_list is None:
       user_list = self._get_all_user()
     album = Album()
@@ -43,6 +44,17 @@ class Crawl(object):
       album.update(token_list, user, force)
       photo.update(token_list, user, force)
       photo.update_data(user)
+    return True
+
+  def update_voice(self, user_list=None, force=False, token_list=token_list):
+    if user_list is None:
+      user_list = self._get_all_user()
+    album = Album()
+    voice = Voice()
+    for user in user_list:
+      album.update(token_list, user, force)
+      voice.update(token_list, user, force)
+      voice.update_data(user)
     return True
 
 if __name__ == '__main__':
@@ -64,10 +76,17 @@ if __name__ == '__main__':
       default=False,
       help='special crawl: images',
   )
+  parser.add_argument('-v', '--voice',
+      action='store_true',
+      default=False,
+      help='special crawl: voices',
+  )
   args = parser.parse_args()
 
   crawl = Crawl()
   if args.img:
     crawl.update_img(args.user, args.force)
+  elif args.voice:
+    crawl.update_voice(args.user, args.force)
   else:
     crawl.update(args.user, args.force)

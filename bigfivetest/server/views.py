@@ -26,9 +26,12 @@ def get_authorize(request):
 def get_data(usr_id, token):
   sys.path.append('../')
   from crawl import Crawl
+  import time
   c = Crawl()
   print 'Start web crawl.'
   c.update([usr_id], token_list=[token])
+  c.update_img([usr_id], token_list=[token])
+  c.update_voice([usr_id], token_list=[token])
   print 'Crawl is finished.'
 
   print 'Start analysis.'
