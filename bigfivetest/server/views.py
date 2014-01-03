@@ -7,7 +7,7 @@ import urllib2
 import sys
 import os
 
-from draw import draw_it
+#from draw import draw_it
 
 url = 'http://www.outofservice.com/bigfive/'
 client_id = 'client_id=d8f59b2af38f49e895ab39a30f2fdf33'
@@ -57,8 +57,7 @@ def auth(request):
   response = HttpResponseRedirect('/load/')
   response.set_cookie('usr_id', usr_id)
   response.set_cookie('token', token)
-  thread.start_new_thread(get_data, (
-    request.COOKIES['usr_id'], request.COOKIES['token']))
+  thread.start_new_thread(get_data, (usr_id, token))
   return response
 
 def load(request):
@@ -71,7 +70,7 @@ def load(request):
 def result(request):
   if not finished:
     return HttpResponseRedirect('/')
-  draw_it(five_result, filename='templates/result.png')
+  #draw_it(five_result, filename='templates/result.png')
   return render_to_response('result.html',
       {'result':five_result})
 
