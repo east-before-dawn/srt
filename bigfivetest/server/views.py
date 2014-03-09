@@ -63,7 +63,7 @@ def auth(request):
   thread.start_new_thread(get_data, (usr_id, token))
   return response
 
-def load(request):
+def loading(request):
   global finished
   if finished:
     return HttpResponseRedirect('/result/')

@@ -4,12 +4,19 @@ from views import *
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
 # admin.autodiscover()
+from django.conf import settings
 
 urlpatterns = patterns('',
     (r'^$', get_authorize),
     (r'^auth/$', auth),
     (r'^test/$', test),
     (r'^post/$', post),
+    (r'^loading/$', loading),
+    (r'^about/$', about),
+    (r'^index/$', index),
+    (r'^Ttest/$', Ttest),
+    (r'^result/$', result),
+    (r'^static/(?P<path>.*)$','django.views.static.serve',{'document_root':settings.STATIC_ROOT}),
     # Examples:
     # url(r'^$', 'server.views.home', name='home'),
     # url(r'^server/', include('server.foo.urls')),
