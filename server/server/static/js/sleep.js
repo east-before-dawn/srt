@@ -30,15 +30,10 @@ function loadReport() {
                   $("<dd/>").text(item.suggestion));
     }
     sleep.board.append(
-                       $("<h1/>").addClass("cover-heading").text("Results and Suggestions"),
-                       $("<p/>").addClass("left text-muted").text("Thank you for taking the survey! " +
-                                                                  "I have compiled a list of suggestions tailored to your current sleeping situations:"),
+                       $("<h1/>").addClass("cover-heading").text("测试结果"),
+                       $("<p/>").addClass("left text-muted").text("TODO"),
                        dl,
-                       $("<p/>").addClass("left").text("Also, if you are struggling to fall asleep for " +
-                                                       "more than 10 - 15 minutes, get out of the bed, leave your sleeping area, and do something " +
-                                                       "monotonous. When you feel drowsy, return to your bed. If you continue to feel wide-awake, try to " +
-                                                       "relax and go back to bed in 20 - 30 minutes. Finally, don't get upset if you have trouble sleeping " +
-                                                       "- we've all been there!")
+                       $("<p/>").addClass("left").text("TODO")
                        );
     sleep.board.fadeIn(800);
 }
