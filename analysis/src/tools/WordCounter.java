@@ -17,13 +17,13 @@ public class WordCounter {
 	public WordCounter(String posWordFile, String negWordFile) {
 		try {
 			BufferedReader br = new BufferedReader(new InputStreamReader(
-					new FileInputStream(posWordFile), "unicode"));
+					new FileInputStream(posWordFile), "utf-8"));
 			String word;
 			while((word = br.readLine()) != null) {
 				posWordList.add(word);
 			}
 			br = new BufferedReader(new InputStreamReader(
-					new FileInputStream(negWordFile), "unicode"));
+					new FileInputStream(negWordFile), "utf-8"));
 			while((word = br.readLine()) != null) {
 				negWordList.add(word);
 			}
@@ -35,7 +35,7 @@ public class WordCounter {
 	}
 	
 	public int countPosWord(String text) {
-		Pattern p = Pattern.compile("[\u4E00-\u9FA5]{1,8}/[danvz]");
+		Pattern p = Pattern.compile("[\u4E00-\u9FA5]{1,8}/[a-z]");
 		Matcher m = p.matcher(text);
 		int ret = 0;
 		while(m.find()) {
@@ -48,7 +48,7 @@ public class WordCounter {
 	}
 	
 	public int countNegWord(String text) {
-		Pattern p = Pattern.compile("[\u4E00-\u9FA5]{1,8}/[danvz]");
+		Pattern p = Pattern.compile("[\u4E00-\u9FA5]{1,8}/[a-z]");
 		Matcher m = p.matcher(text);
 		int ret = 0;
 		while(m.find()) {

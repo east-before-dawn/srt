@@ -52,4 +52,21 @@ public class ARFFGenerator {
 			e.printStackTrace();
 		}
 	}
+	
+	public static void generateARFF(ArrayList<DataInfo> infos, String filename) {
+		try {
+			FileWriter fw = new FileWriter(filename, false);
+			if (infos.size() == 0) {
+				fw.close();
+				return;				
+			}
+			fw.write(infos.get(0).getAttribute());
+			for (DataInfo info: infos)
+				fw.write(info.getData());
+			fw.flush();
+			fw.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 }

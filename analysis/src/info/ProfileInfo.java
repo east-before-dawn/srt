@@ -59,8 +59,9 @@ public class ProfileInfo extends DataInfo{
 	public double getFriendDensity() {return frienddensity;}
 	
 	public String toString() {
-		return "{hanziratio="+hanziratio+"}";
+		return this.getData();
 	}
+	
 	@Override
 	public String getAttribute() {
 		StringBuilder ret = new StringBuilder();
@@ -80,6 +81,7 @@ public class ProfileInfo extends DataInfo{
 		ret.append("@attribute FriendDensity numeric\n");
 		return ret.toString();
 	}
+	
 	@Override
 	public String getData() {
 		StringBuilder ret = new StringBuilder();

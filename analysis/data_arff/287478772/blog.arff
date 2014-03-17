@@ -1,0 +1,19 @@
+@attribute BlogTimestamp numeric
+@attribute BlogShare numeric
+@attribute BlogCmt numeric
+@attribute BlogView numeric
+@attribute BlogTitleLength numeric
+@attribute BlogTextLength numeric
+@attribute BlogIsPublic numeric
+@attribute BlogImg numeric
+@attribute BlogAplus numeric
+@attribute BlogAminus numeric
+@attribute BlogCplus numeric
+@attribute BlogCminus numeric
+@attribute BlogEplus numeric
+@attribute BlogEminus numeric
+@attribute BlogOplus numeric
+@attribute BlogOminus numeric
+@attribute BlogNplus numeric
+@attribute BlogNminus numeric
+2013-10-27 02:47:05,205,19,2312,21,728,1,0,1,30,5,9,49,0,3,4,2,4

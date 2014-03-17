@@ -8,8 +8,6 @@ import info.UserSample;
 import info.WordInfo;
 import info.photoInfo;
 
-import srt.*;
-
 import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -27,12 +25,11 @@ public class DataProcessor {
 	BufferedReader br;
 	SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	Pattern emoPattern = Pattern.compile("\\([0-9a-z\u4e00-\u9fa5]+\\)");
-	Pattern imgPattern = Pattern.compile("(img)|(gif)");
+	Pattern imgPattern = Pattern.compile("(jpg)|(gif)");
 	Pattern chiPattern = Pattern.compile("[\u4e00-\u9fa5]");
 	Pattern doublePattern = Pattern.compile("\\d\\.(\\d)+");
 	Splitter splitter = new Splitter();
-	WordCounter wc = new WordCounter("lexicon/positive.txt",
-			"lexicon/negative.txt");
+	WordCounter wc;
 	Matcher emoMatcher, imgMatcher, chiMatcher;
 	JSONParser parser = new JSONParser();
 	
@@ -134,9 +131,8 @@ public class DataProcessor {
 					maxcmt = cmt;
 				commentsum += cmt;
 				
-				//仅保留本人言论
-				if (content.contains("转自"))
-					content = content.substring(0, content.indexOf("转自"));
+				if (content.contains("���������"))
+					content = content.substring(0, content.indexOf("���������"));
 				textlong += content.length();
 				emoMatcher = emoPattern.matcher(content);
 				while (emoMatcher.find()) {
@@ -195,7 +191,6 @@ public class DataProcessor {
 				textlong += Integer.parseInt((String) obj.get("textlength"));
 				content = (String) obj.get("text");
 				
-				//统计日志中的图片资源
 				int curimg = 0;
 				imgMatcher = imgPattern.matcher(content);
 				while (imgMatcher.find())
@@ -383,6 +378,8 @@ public class DataProcessor {
 	}
 	
 	public WordInfo getWordInfo(String filename) {
+		wc = new WordCounter("emoticon_lexicon/positive.txt",
+				"emoticon_lexicon/negative.txt");
 		File status = new File(filename+"/status.dat");
 		if (!status.exists()) return new WordInfo();
 		int num = 0;

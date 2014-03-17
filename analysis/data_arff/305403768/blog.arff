@@ -1,0 +1,33 @@
+@attribute BlogTimestamp numeric
+@attribute BlogShare numeric
+@attribute BlogCmt numeric
+@attribute BlogView numeric
+@attribute BlogTitleLength numeric
+@attribute BlogTextLength numeric
+@attribute BlogIsPublic numeric
+@attribute BlogImg numeric
+@attribute BlogAplus numeric
+@attribute BlogAminus numeric
+@attribute BlogCplus numeric
+@attribute BlogCminus numeric
+@attribute BlogEplus numeric
+@attribute BlogEminus numeric
+@attribute BlogOplus numeric
+@attribute BlogOminus numeric
+@attribute BlogNplus numeric
+@attribute BlogNminus numeric
+2013-11-13 01:07:04,12,54,315,24,5161,1,26,1,90,70,4,176,1,8,22,6,33
+2012-09-08 19:13:23,37,45,690,37,2070,1,2,19,85,39,5,101,22,6,40,19,28
+2012-07-21 19:30:46,0,22,42,38,1010,1,0,2,37,14,1,62,2,5,2,2,9
+2012-07-01 14:08:57,0,23,124,8,1045,1,0,4,47,31,2,75,2,4,10,6,7
+2012-04-21 23:23:02,1127,41,3972,24,6471,1,8,8,184,88,8,292,3,30,16,13,55
+2012-04-13 10:21:24,2,0,15,30,795,1,0,0,56,7,6,60,0,0,33,8,4
+2011-06-14 22:31:46,0,2,37,5,1656,1,0,0,42,11,5,32,19,4,9,10,0
+2011-05-15 11:30:41,1,9,42,17,1545,1,0,0,45,38,1,80,1,9,3,1,15
+2011-03-08 19:19:48,0,79,155,9,1060,1,0,1,48,41,0,72,1,7,3,2,2
+2010-12-04 23:38:30,7,7,73,15,1426,1,0,0,60,35,2,99,0,13,11,8,12
+2010-11-29 22:58:43,108,19,149,7,6815,1,0,25,257,137,10,309,64,37,73,29,81
+2010-07-02 14:20:22,0,0,16,23,3886,1,0,12,154,44,16,160,8,32,20,20,34
+2010-06-02 17:14:52,2,4,104,48,5370,1,0,6,147,63,5,206,9,16,34,11,35
+2010-03-21 11:01:42,1,1,30,13,3318,1,0,3,66,64,4,134,0,4,5,6,8
+2009-12-31 21:30:47,0,7,47,10,787,1,0,1,21,16,0,61,0,1,2,1,1

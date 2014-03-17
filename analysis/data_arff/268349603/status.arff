@@ -1,0 +1,19 @@
+@attribute StatusTimestamp numeric
+@attribute StatusShare numeric
+@attribute StatusCmt numeric
+@attribute StatusTextLength numeric
+@attribute StatusEmoticon numeric
+@attribute StatusAplus numeric
+@attribute StatusAminus numeric
+@attribute StatusCplus numeric
+@attribute StatusCminus numeric
+@attribute StatusEplus numeric
+@attribute StatusEminus numeric
+@attribute StatusOplus numeric
+@attribute StatusOminus numeric
+@attribute StatusNplus numeric
+@attribute StatusNminus numeric
+2013-11-13 10:15:00,0,3,24,0,0,0,0,0,3,0,0,0,0,1
+2013-11-13 10:15:00,0,3,24,0,0,0,0,0,3,0,0,0,0,1
+2013-12-8 3:29:38,0,6,47,0,0,6,2,0,8,0,2,0,1,2
+2013-11-13 10:15:00,0,3,24,0,0,0,0,0,3,0,0,0,0,1

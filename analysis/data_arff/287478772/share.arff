@@ -1,0 +1,19 @@
+@attribute ShareTimestamp numeric
+@attribute isPhoto numeric
+@attribute isBlog numeric
+@attribute isVideo numeric
+@attribute isOther numeric
+@attribute ShareCmt numeric
+@attribute ShareAplus numeric
+@attribute ShareAminus numeric
+@attribute ShareCplus numeric
+@attribute ShareCminus numeric
+@attribute ShareEplus numeric
+@attribute ShareEminus numeric
+@attribute ShareOplus numeric
+@attribute ShareOminus numeric
+@attribute ShareNplus numeric
+@attribute ShareNminus numeric
+2013-9-23 13:02:28,0,1,0,0,2,0,1,1,0,4,0,0,0,0,1
+2013-5-30 16:03:08,1,0,0,0,1,0,2,0,0,2,0,0,0,0,0
+2013-5-30 16:02:04,1,0,0,0,2,0,2,0,0,1,0,0,0,0,0

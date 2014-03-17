@@ -1,0 +1,23 @@
+@attribute BlogTimestamp numeric
+@attribute BlogShare numeric
+@attribute BlogCmt numeric
+@attribute BlogView numeric
+@attribute BlogTitleLength numeric
+@attribute BlogTextLength numeric
+@attribute BlogIsPublic numeric
+@attribute BlogImg numeric
+@attribute BlogAplus numeric
+@attribute BlogAminus numeric
+@attribute BlogCplus numeric
+@attribute BlogCminus numeric
+@attribute BlogEplus numeric
+@attribute BlogEminus numeric
+@attribute BlogOplus numeric
+@attribute BlogOminus numeric
+@attribute BlogNplus numeric
+@attribute BlogNminus numeric
+2011-02-15 13:20:54,0,11,66,8,3775,1,0,2,78,16,1,158,2,46,0,10,4
+2011-02-15 13:20:54,0,11,66,8,3775,1,0,2,78,16,1,158,2,46,0,10,4
+2011-08-11 16:00:46,0,6,66,17,1470,1,0,0,70,20,1,127,0,7,3,1,1
+2011-06-15 00:30:08,0,2,47,3,1720,1,0,1,60,39,6,58,7,18,10,10,7
+2011-02-15 13:20:54,0,11,66,8,3775,1,0,2,78,16,1,158,2,46,0,10,4
